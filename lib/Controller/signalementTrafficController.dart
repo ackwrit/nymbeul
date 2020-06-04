@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nymbeul/Controller/loginControllerOut.dart';
+import 'package:search_map_place/search_map_place.dart';
 
 class signalementTrafficController extends StatefulWidget{
   @override
@@ -31,8 +34,19 @@ class homeTraffic extends State<signalementTrafficController>{
   Widget _Body(){
     return  new Center(
         child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            Padding(padding: EdgeInsets.all(30)),
+            Text('Lieu',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+            SearchMapPlaceWidget(
+                apiKey: "AIzaSyBuawkYwnpFPLqRpFWzGE3aIvUdlezKkjc",
+              language: "fr",
+              placeType: PlaceType.geocode,
+              placeholder: "Lieu de l'incident",
+              icon: Icons.map,
+
+            ),
+            Padding(padding: EdgeInsets.all(30)),
             Text("Type incident",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
             DropdownButton(
 
@@ -69,13 +83,18 @@ class homeTraffic extends State<signalementTrafficController>{
 
                 //}).toList()
             //),
+            Padding(padding: EdgeInsets.all(10)),
 
 
 
             RaisedButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               onPressed: (){
-                print('coucou');
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (BuildContext context){
+                      return loginControllerOut();
+                    }
+                ));
 
               },
               child: Text('Enregistrer'),

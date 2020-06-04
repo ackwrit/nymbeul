@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:nymbeul/model/message.dart';
 import 'dart:async';
 import 'package:nymbeul/model/user.dart';
 
@@ -76,6 +77,7 @@ class fireBaseHelper {
       "contenu":contenu,
       "typeAnnonce":typeAnnonce,
       "date":date,
+      "uid":uid
 
     };
     base_message.child(uid).set(map);
@@ -88,6 +90,8 @@ class fireBaseHelper {
     DataSnapshot snapshot = await base_user.child(uid).once();
     return user(snapshot);
   }
+
+
 
 
 }

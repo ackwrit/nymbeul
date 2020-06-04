@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:nymbeul/Controller/administrationController.dart';
+import 'package:nymbeul/Controller/detailAnnonceController.dart';
 import 'package:nymbeul/Controller/detailLigne.dart';
 import 'package:nymbeul/Controller/loisirController.dart';
 import 'package:nymbeul/Fonction/datas.dart';
@@ -16,8 +17,9 @@ import 'package:nymbeul/model/menu.dart';
 import 'package:nymbeul/model/element.dart';
 import 'package:nymbeul/listing/enumeration.dart';
 import 'package:nymbeul/model/message.dart';
+import 'package:nymbeul/model/user.dart';
 import 'package:nymbeul/widget/annonce.dart';
-import '';
+import 'package:search_map_place/search_map_place.dart';
 
 import 'ligne.dart';
 
@@ -259,10 +261,16 @@ class structureState extends State<pageStructure>{
   {
     return Center(child: Builder(
       builder: (context) {
-        return MaterialButton(
-          onPressed: () => openMapsSheet(context),
-          child: Text('Afficher la carte'),
+        return Column(
+          children: [
+
+            MaterialButton(
+              onPressed: () => openMapsSheet(context),
+              child: Text('Destination'),
+            )
+          ],
         );
+
       },
     ));
   }
@@ -288,36 +296,61 @@ Widget _BodyList()
   {
     if(widget.titre == 'Jobs')
       {
-        return FirebaseAnimatedList(
-            query: fireBaseHelper().base_message,
-            itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
-              message liste = message(snapshot);
-              if(liste.typeAnnonce== widget.titre)
-                {
-                  return ListTile(
-                    leading: Text(liste.titre),
-
-                  );
-                }
-
-            }
-        );
+       return FirebaseAnimatedList(
+         query: fireBaseHelper().base_message,
+         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+           message mess =message(snapshot);
+           if(mess.typeAnnonce==widget.titre){
+             return Card(
+               child: ListTile(
+                 title: Text(mess.titre),
+                 trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                 {
+                   Navigator.push(context, MaterialPageRoute(
+                       builder: (BuildContext context)
+                           {
+                             return detailAnnonceController(mess: mess,);
+                           }
+                   ));
+                 }
+                 ),
+               ),
+             );
+           }
+           else{
+             return Container();
+           }
+         },
+       );
       }
     if(widget.titre == 'Les offres de service')
       {
         return FirebaseAnimatedList(
-            query: fireBaseHelper().base_message,
-            itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
-              message liste = message(snapshot);
-              if(liste.typeAnnonce== widget.titre)
-              {
-                return ListTile(
-                  leading: Text(liste.titre),
+          query: fireBaseHelper().base_message,
+          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+            message mess =message(snapshot);
 
-                );
-              }
-
+            if(mess.typeAnnonce==widget.titre){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
             }
+            else{
+              return Container();
+            }
+          },
         );
 
 
@@ -325,67 +358,111 @@ Widget _BodyList()
     if(widget.titre=='Evènements Religieux')
       {
         return FirebaseAnimatedList(
-            query: fireBaseHelper().base_message,
-            itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
-              message liste = message(snapshot);
-              if(liste.typeAnnonce== widget.titre)
+          query: fireBaseHelper().base_message,
+          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+            message mess =message(snapshot);
+            if(mess.typeAnnonce==widget.titre){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+            }
+            else
               {
-                return ListTile(
-                  leading: Text(liste.titre),
-
-                );
+                return Container();
               }
+          },
+        );
+      }
+    if(widget.titre =='Annonces diverses')
+      {
+
+        return FirebaseAnimatedList(
+          query: fireBaseHelper().base_message,
+          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+            message mess =message(snapshot);
+            if(mess.typeAnnonce==widget.titre){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+            }
+            else{
+              return Container();
+            }
+          },
+        );
+      }
+    if(widget.titre=="administration")
+      {
+        return new GridView.builder(
+            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            itemCount: liste.length,
+            itemBuilder: (context,index)
+            {
+              return new InkWell(
+
+                child:new Container(
+                  child: new Card(
+                    shape: RoundedRectangleBorder(side: BorderSide(style: BorderStyle.solid),borderRadius: BorderRadius.circular(20.0)),
+
+                    elevation: 10.0,
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Text(liste[index].titre,style: new TextStyle(fontSize: 20,color: Colors.orangeAccent),),
+                        Hero(
+                            tag: liste[index].image,
+                            child: Image.asset(liste[index].image,height: 130,color: Colors.blueGrey,)),
+
+                        //heroWidget(liste[index].image),
+
+                      ],
+
+                    ),
+                  ),
+                ),
+                onTap: (){
+
+
+                  datas().pusherDetail(context, liste[index].image, liste[index].description,liste[index].titre,liste: liste[index]);
+
+                },
+
+              );
 
             }
         );
-
       }
-    if(widget.titre =='Annonces Diverses')
-      {
 
-        return Text('Divers');
-      }
-    return new GridView.builder(
-        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemCount: liste.length,
-        itemBuilder: (context,index)
-        {
-          return new InkWell(
-
-            child:new Container(
-              child: new Card(
-                shape: RoundedRectangleBorder(side: BorderSide(style: BorderStyle.solid),borderRadius: BorderRadius.circular(20.0)),
-
-                elevation: 10.0,
-                child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Text(liste[index].titre,style: new TextStyle(fontSize: 20,color: Colors.orangeAccent),),
-                    Hero(
-                        tag: liste[index].image,
-                        child: Image.asset(liste[index].image,height: 130,color: Colors.blueGrey,)),
-
-                    //heroWidget(liste[index].image),
-
-                  ],
-
-                ),
-              ),
-            ),
-              onTap: (){
-
-
-            datas().pusherDetail(context, liste[index].image, liste[index].description,liste[index].titre,liste: liste[index]);
-
-          },
-
-          );
-
-        }
-    );
 
 
   }
+
+
+
 
 
 

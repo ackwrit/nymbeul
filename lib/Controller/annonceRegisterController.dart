@@ -12,10 +12,10 @@ class annonceRegisterController extends StatefulWidget{
 }
 
 class homeAnnonce extends State<annonceRegisterController>{
-  String dropdownValue='jobs';
+  String dropdownValue='Jobs';
   String titre;
   String contenu;
-  List<String>annonceListing=["jobs","les offres de service","Evènements Religieux","Annonce Diverses"];
+  List<String>annonceListing=["Jobs","Les offres de service","Evènements Religieux","Annonce diverses"];
   @override
   void initState() {
     // TODO: implement initState

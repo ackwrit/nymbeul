@@ -4,19 +4,20 @@ class message{
 
   String titre;
   String contenu;
-  DateTime temps;
+  String temps;
   String typeAnnonce;
   String idUser;
   String uid;
+
   message(DataSnapshot snapshot)
   {
     uid=snapshot.key;
     Map map =snapshot.value;
-    map["titre"]=titre;
-    map["contenu"]=contenu;
-    map["Date"]=DateTime.now();
-   map["typeAnnonce"]=typeAnnonce;
-    map["ideUser"]=idUser;
+    titre=map["titre"];
+    contenu=map["contenu"];
+    //map["Date"]=DateTime.now().toIso8601String();
+   typeAnnonce=map["typeAnnonce"];
+    idUser=map["idUser"];
 
 
   }
@@ -26,7 +27,7 @@ class message{
   return {
   "titre":titre,
     "contenu":contenu,
-    "Date":temps,
+    //"Date":temps,
     "typeAnnonce":typeAnnonce,
     "uid":uid
 
