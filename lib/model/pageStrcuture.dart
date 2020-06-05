@@ -300,7 +300,7 @@ Widget _BodyList()
          query: fireBaseHelper().base_message,
          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
            message mess =message(snapshot);
-           if(mess.typeAnnonce==widget.titre){
+           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
              return Card(
                child: ListTile(
                  title: Text(mess.titre),
@@ -330,7 +330,7 @@ Widget _BodyList()
           itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
             message mess =message(snapshot);
 
-            if(mess.typeAnnonce==widget.titre){
+            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Card(
               child: ListTile(
                 title: Text(mess.titre),
@@ -361,7 +361,7 @@ Widget _BodyList()
           query: fireBaseHelper().base_message,
           itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
             message mess =message(snapshot);
-            if(mess.typeAnnonce==widget.titre){
+            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Card(
               child: ListTile(
                 title: Text(mess.titre),
@@ -392,7 +392,7 @@ Widget _BodyList()
           query: fireBaseHelper().base_message,
           itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
             message mess =message(snapshot);
-            if(mess.typeAnnonce==widget.titre){
+            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Card(
               child: ListTile(
                 title: Text(mess.titre),

@@ -8,6 +8,7 @@ class message{
   String typeAnnonce;
   String idUser;
   String uid;
+  String validate;
 
   message(DataSnapshot snapshot)
   {
@@ -18,6 +19,7 @@ class message{
     //map["Date"]=DateTime.now().toIso8601String();
    typeAnnonce=map["typeAnnonce"];
     idUser=map["idUser"];
+    validate =map['validation'];
 
 
   }
@@ -29,7 +31,8 @@ class message{
     "contenu":contenu,
     //"Date":temps,
     "typeAnnonce":typeAnnonce,
-    "uid":uid
+    "uid":uid,
+    "validation":validate
 
   };
 }

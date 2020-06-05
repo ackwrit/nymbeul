@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/listeAnnonce.dart';
+import 'package:nymbeul/Controller/profilPage.dart';
 
 class adminPage extends StatefulWidget{
   @override
@@ -34,10 +35,10 @@ class homeAdmin extends State<adminPage>{
             activeColor: Colors.black,
             inactiveColor: Colors.white,
             items:[
-              new BottomNavigationBarItem(icon: new Icon(Icons.search),title: new Text("Recherche")),
-              new BottomNavigationBarItem(icon: new Icon(Icons.map),title: new Text('Carte')),
+              new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
+              new BottomNavigationBarItem(icon: new Icon(Icons.format_list_bulleted),title: new Text('Annonce')),
 
-              new BottomNavigationBarItem(icon: new Icon(Icons.event),title: new Text('Rendez-vous')),
+
 
 
 
@@ -55,7 +56,7 @@ class homeAdmin extends State<adminPage>{
                   Navigator.push(context, MaterialPageRoute(
                       builder: (BuildContext context)
                       {
-                        return null;
+                        return adminPage();
                       }
                   ));
 
@@ -86,10 +87,10 @@ class homeAdmin extends State<adminPage>{
 
   List <Widget> controllers (){
     return [
+      profilPage(),
       listeAnnonce(),
-      Text('coucou'),
 
-      Text('coucou'),
+
 
 
 

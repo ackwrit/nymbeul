@@ -67,7 +67,12 @@ class fireBaseHelper {
     base_user.child(uid).set(map);
   }
 
-  sendMessage(String titre, String contenu, String monId,String typeAnnonce)
+
+  deleteMessage(String uid){
+    base_message.child(uid).remove();
+  }
+
+  sendMessage(String titre, String contenu, String monId,String typeAnnonce,String validate)
   {
     String uid = monId+DateTime.now().millisecondsSinceEpoch.toString();
     String date = DateTime.now().millisecondsSinceEpoch.toString();
@@ -77,7 +82,8 @@ class fireBaseHelper {
       "contenu":contenu,
       "typeAnnonce":typeAnnonce,
       "date":date,
-      "uid":uid
+      "uid":uid,
+      "validation":validate
 
     };
     base_message.child(uid).set(map);

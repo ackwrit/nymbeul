@@ -46,12 +46,22 @@ class homeChoix extends State<choixLogin>{
 
 
     // TODO: implement build
-    if(utilisateur.typeUser!='particulier'){
-      return adminPage();
-    }
-    else{
-      return loginControllerOut();
-    }
+    if(utilisateur.typeUser == null)
+      {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    else
+      {
+        if(utilisateur.typeUser!='particulier'){
+          return adminPage();
+        }
+        else{
+          return loginControllerOut();
+        }
+      }
+
 
   }
 

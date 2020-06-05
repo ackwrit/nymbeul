@@ -132,7 +132,7 @@ class homeAnnonce extends State<annonceRegisterController>{
           RaisedButton(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               onPressed: (){
-              fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue);
+              fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue,"non");
               Navigator.push(context, MaterialPageRoute(
                 builder: (BuildContext context){
                   return MyApp();
