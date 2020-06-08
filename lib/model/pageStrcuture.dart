@@ -5,21 +5,22 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:map_launcher/map_launcher.dart';
-import 'package:nymbeul/Controller/administrationController.dart';
+
 import 'package:nymbeul/Controller/detailAnnonceController.dart';
 import 'package:nymbeul/Controller/detailLigne.dart';
-import 'package:nymbeul/Controller/loisirController.dart';
+
 import 'package:nymbeul/Fonction/datas.dart';
-import 'package:nymbeul/model/detailStructure.dart';
+
 import 'package:nymbeul/model/fireBaseHelper.dart';
 import 'package:nymbeul/model/herowidget.dart';
-import 'package:nymbeul/model/menu.dart';
+
 import 'package:nymbeul/model/element.dart';
 import 'package:nymbeul/listing/enumeration.dart';
 import 'package:nymbeul/model/message.dart';
-import 'package:nymbeul/model/user.dart';
+
 import 'package:nymbeul/widget/annonce.dart';
-import 'package:search_map_place/search_map_place.dart';
+import 'package:platform_maps_flutter/platform_maps_flutter.dart';
+
 
 import 'ligne.dart';
 
@@ -259,14 +260,39 @@ class structureState extends State<pageStructure>{
 
   Widget launcherMap()
   {
-    return Center(child: Builder(
+    return Center(
+        child: Builder(
       builder: (context) {
         return Column(
           children: [
+            Container(
+              height: MediaQuery.of(context).size.height/1.5,
+              child: PlatformMap(
+                initialCameraPosition : CameraPosition(
+                  target: LatLng(0, 0),
+                ),
+                myLocationEnabled: true,
+                myLocationButtonEnabled: true,
+                onMapCreated: (controller){
+                  Future.delayed(Duration(seconds: 5)).then((_)
+                  {
+                    controller.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                            CameraPosition(
+                              target: LatLng(position.latitude, position.longitude),
+                              zoom:14.0,
+                            ))
+                    );
+                  });
+                },
+
+              ),
+            ),
+
 
             MaterialButton(
               onPressed: () => openMapsSheet(context),
-              child: Text('Destination'),
+              child: Text('Où souhaitez-vous aller ? '),
             )
           ],
         );

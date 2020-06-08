@@ -1,4 +1,6 @@
 PODS:
+  - apple_maps_flutter (0.0.1):
+    - Flutter
   - Firebase/Auth (6.20.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.5.0)
@@ -117,6 +119,7 @@ PODS:
   - PromisesObjC (1.2.8)
 
 DEPENDENCIES:
+  - apple_maps_flutter (from `.symlinks/plugins/apple_maps_flutter/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_auth_web (from `.symlinks/plugins/firebase_auth_web/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -152,6 +155,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  apple_maps_flutter:
+    :path: ".symlinks/plugins/apple_maps_flutter/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_auth_web:
@@ -178,6 +183,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/map_launcher/ios"
 
 SPEC CHECKSUMS:
+  apple_maps_flutter: 45925bdf704b86f713fcf6979ee1999d17b2a6e0
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   firebase_auth: 4ee3a54d3f09434c508c284a62f895a741a30637
   firebase_auth_web: 0955c07bcc06e84af76b9d4e32e6f31518f2d7de
