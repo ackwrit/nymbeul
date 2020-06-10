@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/listeAnnonce.dart';
+import 'package:nymbeul/Controller/loginControllerOut.dart';
 import 'package:nymbeul/Controller/profilPage.dart';
+import 'package:nymbeul/model/fireBaseHelper.dart';
 
 class adminPage extends StatefulWidget{
   @override
@@ -50,6 +52,18 @@ class homeAdmin extends State<adminPage>{
           Widget controllerSelected= controllers()[index];
           return new Scaffold(
             appBar: new AppBar(
+              leading: IconButton(
+                  icon: Icon(Icons.clear),
+                  onPressed: ()
+                  {
+                    fireBaseHelper().auth.signOut();
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context){
+                          return loginControllerOut();
+                        }
+                    ));
+                  }
+              ),
               actions: [
                 IconButton(icon:Icon(Icons.account_circle), onPressed:()
                 {
