@@ -320,6 +320,366 @@ Widget _BodyList()
 }
   Widget body()
   {
+    if(widget.titre == 'Concours')
+      {
+        return FirebaseAnimatedList(
+          query: fireBaseHelper().base_message,
+          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+            message mess =message(snapshot);
+            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+              return Card(
+                child: ListTile(
+                  title: Text(mess.titre),
+                  trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                  {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  }
+                  ),
+                ),
+              );
+            }
+            else{
+              return Container();
+            }
+          },
+        );
+      }
+    if(widget.titre == 'Préfecture')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+
+
+    if(widget.titre == 'Mairie')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+
+
+    if(widget.titre == 'Commissariat')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+
+    if(widget.titre == 'Hopitaux')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+    if(widget.titre == 'Pharmacie')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+    if(widget.titre == 'Ecoles et Institutions')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+    if(widget.titre == 'Banques')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+    if(widget.titre == 'Bars et Restaurants')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+
+
+    if(widget.titre == 'Parcs et Jardins')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+
+    if(widget.titre == 'Evènements culturels et Sportifs')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+
+
+    if(widget.titre == 'Divers')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Card(
+              child: ListTile(
+                title: Text(mess.titre),
+                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context)
+                      {
+                        return detailAnnonceController(mess: mess,);
+                      }
+                  ));
+                }
+                ),
+              ),
+            );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+
+
     if(widget.titre == 'Jobs')
       {
        return FirebaseAnimatedList(
