@@ -48,9 +48,25 @@ class homeLoginOut extends State<loginControllerOut>{
 
                 ],
 
-                title: Image.asset('assets/nymbeul_logo.png',height: 170,width: 600,),
-                backgroundColor: Colors.blue,),
+                title: Image.asset('assets/nymbeul_logo.png',height: 200,width: 600,),
+
+                backgroundColor: Colors.blue,
+                flexibleSpace: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Colors.blue,
+                          Colors.blueGrey
+                        ]
+                    )
+                  ),
+                ),
+                elevation: 0.0,
+              ),
               body: controllerSelected,
+
 
 
             );
