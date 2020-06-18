@@ -34,9 +34,14 @@ class annonceControllerState extends State<annonceController>{
     // TODO: implement build
     return new Scaffold(
         appBar: new AppBar(
-          title: Text("Petites Annonces"),
+          title:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Text("Petites Annonces"),
+          ) ,
+
           centerTitle: true,
           backgroundColor: Colors.blueGrey,
+
         ),
 
         body:_body()

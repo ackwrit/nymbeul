@@ -24,7 +24,7 @@ class transportControllerState extends State<transportController>{
 
   List <section> section_list=[
     new section("Etats du trafic", Icons.domain,null),
-    new section("Dakar en transport -DEM DIK", Icons.domain, null),
+    new section("Dakar en transport -DEM DIKK", Icons.domain, null),
     new section("Dakar et ses régions", Icons.domain, null),
     new section("Dakar en voiture", Icons.domain, null),
 

@@ -50,48 +50,48 @@ class structureState extends State<pageStructure>{
   final availableMaps = MapLauncher.installedMaps;
 
   enumeration choix;
-   List  liste=[];
-   List <annonce> listeoffre=[
-     annonce(DateTime.now(),'Bâtiment', 'Qualification : Maçon/ construction bâtiment ', 'Pape D.', 'Keur MBaye Fall', '773494501', 'assets/senegal_amoirie.png'),
-     annonce(DateTime.now(),'Location Nuit', 'Appart /Nuit / 12 000f', 'Gerant Mame Ran', 'Yoff', '777579585', 'assets/tourisme.png'),
-   ];
-   List <element>listMinistere=[
-     element("Interieur", "coucou", "assets/interieur.png"),
-     element("Tourisme","visiter et voyager dans dakar", "assets/tourisme.png"),
-     element("Justice", "coucou", "assets/justice.png"),
-     element("Défense", "coucou", "assets/armee.png"),
+  List  liste=[];
+  List <annonce> listeoffre=[
+    annonce(DateTime.now(),'Bâtiment', 'Qualification : Maçon/ construction bâtiment ', 'Pape D.', 'Keur MBaye Fall', '773494501', 'assets/senegal_amoirie.png'),
+    annonce(DateTime.now(),'Location Nuit', 'Appart /Nuit / 12 000f', 'Gerant Mame Ran', 'Yoff', '777579585', 'assets/tourisme.png'),
+  ];
+  List <element>listMinistere=[
+    element("Interieur", "coucou", "assets/interieur.png"),
+    element("Tourisme","visiter et voyager dans dakar", "assets/tourisme.png"),
+    element("Justice", "coucou", "assets/justice.png"),
+    element("Défense", "coucou", "assets/armee.png"),
 
-     element("Santé", "coucou", "assets/sante.png"),
-     element("Affaire étrangère","coucou",'assets/etranger.png'),
-     element("économie","coucou",'assets/economie.png'),
-     element("Culture","coucou",'assets/cuture.png'),
-     element("Agriculture","coucou",'assets/agriculture.png'),
-     
-   ];
+    element("Santé", "coucou", "assets/sante.png"),
+    element("Affaire étrangère","coucou",'assets/etranger.png'),
+    element("économie","coucou",'assets/economie.png'),
+    element("Culture","coucou",'assets/cuture.png'),
+    element("Agriculture","coucou",'assets/agriculture.png'),
 
-   List<ligne> listetransport =[
-     ligne("1","Parcelles Place Leclerc","Assainies"),
-     ligne("2","Daroukhane","Leclerc"),
-     ligne("4","Dieuppeul","Allées Canard-Esso"),
-     ligne("5","Guédiawaye","Av Léopold Senghor"),
-     ligne("6","Cambéréne 2 ","Palais 2"),
-     ligne("7","Ouakam","Palais de Justice"),
-     ligne("8","Aéroport L.S.S ","Palais de justice"),
-     ligne("9","Liberté 6 ","Palais 2"),
-     ligne("10","Dieuppeul","Palais 2"),
-     ligne("11","Keur Massar ","Lat-Dior"),
-     ligne("12","Guédiawaye","Palais de Justice"),
-     ligne("13","Dieuppeul","Palais 2"),
-     ligne("15","Rufisque","Palais 1"),
-     ligne("16 A"," Malika","Palais de justice 1"),
-     ligne("16 B","Malika ","Palais 1"),
-     ligne("18","Dieuppeul ","Dieuppeul"),
-     ligne("20","Dieuppeul","Dieuppeul"),
-     ligne("218","Dépôt Thiaroye","aéroport"),
-     ligne("219","Daroukhane","Ouakam"),
-     ligne("219'","Keur Massar","église"),
-     ligne("228","Rufisque","Diamniadio Yenne"),
-     ligne("232","Baux Maraichers","Aéroport"),
+  ];
+
+  List<ligne> listetransport =[
+    ligne("1","Parcelles Place Leclerc","Assainies"),
+    ligne("2","Daroukhane","Leclerc"),
+    ligne("4","Dieuppeul","Allées Canard-Esso"),
+    ligne("5","Guédiawaye","Av Léopold Senghor"),
+    ligne("6","Cambéréne 2 ","Palais 2"),
+    ligne("7","Ouakam","Palais de Justice"),
+    ligne("8","Aéroport L.S.S ","Palais de justice"),
+    ligne("9","Liberté 6 ","Palais 2"),
+    ligne("10","Dieuppeul","Palais 2"),
+    ligne("11","Keur Massar ","Lat-Dior"),
+    ligne("12","Guédiawaye","Palais de Justice"),
+    ligne("13","Dieuppeul","Palais 2"),
+    ligne("15","Rufisque","Palais 1"),
+    ligne("16 A"," Malika","Palais de justice 1"),
+    ligne("16 B","Malika ","Palais 1"),
+    ligne("18","Dieuppeul ","Dieuppeul"),
+    ligne("20","Dieuppeul","Dieuppeul"),
+    ligne("218","Dépôt Thiaroye","aéroport"),
+    ligne("219","Daroukhane","Ouakam"),
+    ligne("219'","Keur Massar","église"),
+    ligne("228","Rufisque","Diamniadio Yenne"),
+    ligne("232","Baux Maraichers","Aéroport"),
 
 
 
@@ -109,7 +109,7 @@ class structureState extends State<pageStructure>{
       case "Les offres de service":
         setState(() {
           choix=enumeration.lesoffresdeservice;
-          
+
         });
         break;
       default:break;
@@ -140,8 +140,8 @@ class structureState extends State<pageStructure>{
   }
 
 
-   @override
-   void initState() {
+  @override
+  void initState() {
     // TODO: implement initState
     super.initState();
     choixDestination();
@@ -194,12 +194,12 @@ class structureState extends State<pageStructure>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: new AppBar(
-        title: (widget.titre=='Dakar en transport -DEM DIK'|| widget.titre=="Dakar en voiture")?Text('${widget.titre}'):Text(widget.titre),
-        backgroundColor: Colors.blue,
+        appBar: new AppBar(
+          title: (widget.titre=='Dakar en transport -DEM DIKK'|| widget.titre=="Dakar en voiture")?Text('${widget.titre}'):Text(widget.titre),
+          backgroundColor: Colors.blue,
 
-      ),
-      body:(widget.titre=='Dakar en transport -DEM DIK' || widget.titre=='Dakar en voiture')?choixBody():body()
+        ),
+        body:(widget.titre=='Dakar en transport -DEM DIKK' || widget.titre=='Dakar en voiture')?choixBody():body()
 
     );
   }
@@ -248,10 +248,10 @@ class structureState extends State<pageStructure>{
 
   Widget choixBody()
   {
-    if(widget.titre=="Dakar en transport -DEM DIK")
-      {
-        return _BodyList();
-      }
+    if(widget.titre=="Dakar en transport -DEM DIKK")
+    {
+      return _BodyList();
+    }
     if(widget.titre=='Dakar en voiture'){
       return launcherMap();
     }
@@ -262,93 +262,127 @@ class structureState extends State<pageStructure>{
   {
     return Center(
         child: Builder(
-      builder: (context) {
-        return Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height/1.5,
-              child: PlatformMap(
-                initialCameraPosition : CameraPosition(
-                  target: LatLng(0, 0),
-                ),
-                myLocationEnabled: true,
-                myLocationButtonEnabled: true,
-                onMapCreated: (controller){
-                  Future.delayed(Duration(seconds: 5)).then((_)
-                  {
-                    controller.animateCamera(
-                        CameraUpdate.newCameraPosition(
-                            CameraPosition(
-                              target: LatLng(position.latitude, position.longitude),
-                              zoom:14.0,
-                            ))
-                    );
-                  });
-                },
+          builder: (context) {
+            return Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height/1.5,
+                  child: PlatformMap(
+                    initialCameraPosition : CameraPosition(
+                      target: LatLng(0, 0),
+                    ),
+                    myLocationEnabled: true,
+                    myLocationButtonEnabled: true,
+                    onMapCreated: (controller){
+                      Future.delayed(Duration(seconds: 5)).then((_)
+                      {
+                        controller.animateCamera(
+                            CameraUpdate.newCameraPosition(
+                                CameraPosition(
+                                  target: LatLng(position.latitude, position.longitude),
+                                  zoom:14.0,
+                                ))
+                        );
+                      });
+                    },
 
-              ),
-            ),
-
-
-            MaterialButton(
-              onPressed: () => openMapsSheet(context),
-              child: Text('Où souhaitez-vous aller ? '),
-            )
-          ],
-        );
-
-      },
-    ));
-  }
-Widget _BodyList()
-{
-  return Container(
-    child: ListView.separated(
-        itemBuilder: (BuildContext context,int index){
-          return tile(context,listetransport[index]);
-
-  },
-      itemCount: listetransport.length,
-      separatorBuilder: (context,index){
-        return Divider(
-          thickness: 1,
-          color: Colors.orange,
-        );
-      },
-    )
-  );
-}
-  Widget body()
-  {
-    if(widget.titre == 'Concours')
-      {
-        return FirebaseAnimatedList(
-          query: fireBaseHelper().base_message,
-          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
-            message mess =message(snapshot);
-            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-              return Card(
-                child: ListTile(
-                  title: Text(mess.titre),
-                  trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                  {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (BuildContext context)
-                        {
-                          return detailAnnonceController(mess: mess,);
-                        }
-                    ));
-                  }
                   ),
                 ),
-              );
-            }
-            else{
-              return Container();
-            }
+
+
+                MaterialButton(
+                  onPressed: () => openMapsSheet(context),
+                  child: Text('Où souhaitez-vous aller ? '),
+                )
+              ],
+            );
+
           },
+        ));
+  }
+  Widget _BodyList()
+  {
+    return Container(
+        child: ListView.separated(
+          itemBuilder: (BuildContext context,int index){
+            return tile(context,listetransport[index]);
+
+          },
+          itemCount: listetransport.length,
+          separatorBuilder: (context,index){
+            return Divider(
+              thickness: 1,
+              color: Colors.orange,
+            );
+          },
+        )
+    );
+  }
+  Widget body()
+  {
+    if(widget.titre=='Dakar et ses régions')
+      {
+        return Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(padding: EdgeInsets.all(10),),
+                Text('Terminus Liberté 5',style: TextStyle(fontSize: 25),),
+                Padding(padding: EdgeInsets.all(5),),
+                Text('Pour tout départ et arrivée en bus - DEM DIKK'),
+                Padding(padding: EdgeInsets.all(15),),
+
+                Text('Gare routière les Beaux maraîchiers Bountou Pikine',style: TextStyle(fontSize: 25),textAlign: TextAlign.center,),
+                Padding(padding: EdgeInsets.all(5),),
+                Text('Pour tout autre moyen de transport en commun allant dans les régions',),
+
+              ],
+            ),
+
+          ),
+
         );
       }
+    if(widget.titre == 'Concours')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
+                ),
+                Divider(thickness: 3,color: Colors.orange,)
+
+              ],
+
+            );
+
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
     if(widget.titre == 'Préfecture')
     {
       return FirebaseAnimatedList(
@@ -356,21 +390,29 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(thickness: 3,color: Colors.orange,)
+
+              ],
+
             );
+
           }
           else{
             return Container();
@@ -387,21 +429,28 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(thickness: 3,color: Colors.orange,)
+
+              ],
             );
+
           }
           else{
             return Container();
@@ -418,21 +467,29 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(thickness: 3,color: Colors.orange,)
+
+
+              ],
             );
+
           }
           else{
             return Container();
@@ -448,21 +505,29 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(thickness: 3,color: Colors.orange,)
+
+              ],
+
             );
+
           }
           else{
             return Container();
@@ -477,21 +542,28 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(thickness: 3,color: Colors.orange,)
+              ],
+
             );
+
           }
           else{
             return Container();
@@ -506,21 +578,32 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(
+                  thickness: 3,
+                  color: Colors.orange,
+                )
+
+
+              ],
             );
+
           }
           else{
             return Container();
@@ -535,21 +618,31 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(
+                  thickness: 3,
+                  color: Colors.orange,
+                )
+
+              ],
             );
+
           }
           else{
             return Container();
@@ -564,21 +657,32 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(
+                  thickness: 3,
+                  color: Colors.orange,
+                )
+
+              ],
+
             );
+
           }
           else{
             return Container();
@@ -595,21 +699,32 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(
+                  thickness: 3,
+                  color: Colors.orange,
+                ),
+
+              ],
+
             );
+
           }
           else{
             return Container();
@@ -625,21 +740,32 @@ Widget _BodyList()
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
                 ),
-              ),
+                Divider(
+                  thickness: 3,
+                  color: Colors.orange,
+                ),
+
+              ],
+
             );
+
           }
           else{
             return Container();
@@ -652,25 +778,42 @@ Widget _BodyList()
     if(widget.titre == 'Divers')
     {
       return FirebaseAnimatedList(
+
         query: fireBaseHelper().base_message,
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
+
+
+
+
                 ),
-              ),
+                Divider(
+                  color: Colors.orange,
+                  thickness: 3,
+                ),
+
+              ],
+
             );
+
+
           }
           else{
             return Container();
@@ -681,167 +824,212 @@ Widget _BodyList()
 
 
     if(widget.titre == 'Jobs')
-      {
-       return FirebaseAnimatedList(
-         query: fireBaseHelper().base_message,
-         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
-           message mess =message(snapshot);
-           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-             return Card(
-               child: ListTile(
-                 title: Text(mess.titre),
-                 trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                 {
-                   Navigator.push(context, MaterialPageRoute(
-                       builder: (BuildContext context)
-                           {
-                             return detailAnnonceController(mess: mess,);
-                           }
-                   ));
-                 }
-                 ),
-               ),
-             );
-           }
-           else{
-             return Container();
-           }
-         },
-       );
-      }
-    if(widget.titre == 'Les offres de service')
-      {
-        return FirebaseAnimatedList(
-          query: fireBaseHelper().base_message,
-          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
-            message mess =message(snapshot);
-
-            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
-                ),
-              ),
-            );
-            }
-            else{
-              return Container();
-            }
-          },
-        );
-
-
-      }
-    if(widget.titre=='Evènements Religieux')
-      {
-        return FirebaseAnimatedList(
-          query: fireBaseHelper().base_message,
-          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
-            message mess =message(snapshot);
-            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
-                ),
-              ),
-            );
-            }
-            else
-              {
-                return Container();
-              }
-          },
-        );
-      }
-    if(widget.titre =='Annonces diverses')
-      {
-
-        return FirebaseAnimatedList(
-          query: fireBaseHelper().base_message,
-          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
-            message mess =message(snapshot);
-            if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
-            return Card(
-              child: ListTile(
-                title: Text(mess.titre),
-                trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return detailAnnonceController(mess: mess,);
-                      }
-                  ));
-                }
-                ),
-              ),
-            );
-            }
-            else{
-              return Container();
-            }
-          },
-        );
-      }
-    if(widget.titre=="administration")
-      {
-        return new GridView.builder(
-            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemCount: liste.length,
-            itemBuilder: (context,index)
-            {
-              return new InkWell(
-
-                child:new Container(
-                  child: new Card(
-                    shape: RoundedRectangleBorder(side: BorderSide(style: BorderStyle.solid),borderRadius: BorderRadius.circular(20.0)),
-
-                    elevation: 10.0,
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Text(liste[index].titre,style: new TextStyle(fontSize: 20,color: Colors.orangeAccent),),
-                        Hero(
-                            tag: liste[index].image,
-                            child: Image.asset(liste[index].image,height: 130,color: Colors.blueGrey,)),
-
-                        //heroWidget(liste[index].image),
-
-                      ],
-
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
                     ),
                   ),
                 ),
-                onTap: (){
+                Divider(
+                  color: Colors.orange,
+                  thickness: 3,
+                )
 
 
-                  datas().pusherDetail(context, liste[index].image, liste[index].description,liste[index].titre,liste: liste[index]);
+              ],
 
-                },
+            );
 
-              );
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+    if(widget.titre == 'Les offres de service')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
 
-            }
-        );
-      }
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: Colors.orange,
+                  thickness: 3,
+                )
+              ],
+
+            );
+
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+
+
+    }
+    if(widget.titre=='Evènements Religieux')
+    {
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Column(
+                children:[
+                  Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    thickness: 3,
+                    color: Colors.orange,
+                  ),
+
+                ]
+
+
+            );
+
+          }
+          else
+          {
+            return Container();
+          }
+        },
+      );
+    }
+    if(widget.titre =='Annonces diverses')
+    {
+
+      return FirebaseAnimatedList(
+        query: fireBaseHelper().base_message,
+        itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
+          message mess =message(snapshot);
+          if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
+            return Column(
+              children: [
+                Card(
+                  child: ListTile(
+                    title: Text(mess.titre),
+                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    }
+                    ),
+                  ),
+                ),
+                Divider(
+                  thickness: 3,
+                  color: Colors.orange,
+                ),
+
+
+              ],
+            );
+
+          }
+          else{
+            return Container();
+          }
+        },
+      );
+    }
+    if(widget.titre=="administration")
+    {
+      return new GridView.builder(
+          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          itemCount: liste.length,
+          itemBuilder: (context,index)
+          {
+            return new InkWell(
+
+              child:new Container(
+                child: new Card(
+                  shape: RoundedRectangleBorder(side: BorderSide(style: BorderStyle.solid),borderRadius: BorderRadius.circular(20.0)),
+
+                  elevation: 10.0,
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Text(liste[index].titre,style: new TextStyle(fontSize: 20,color: Colors.orangeAccent),),
+                      Hero(
+                          tag: liste[index].image,
+                          child: Image.asset(liste[index].image,height: 130,color: Colors.blueGrey,)),
+
+                      //heroWidget(liste[index].image),
+
+                    ],
+
+                  ),
+                ),
+              ),
+              onTap: (){
+
+
+                datas().pusherDetail(context, liste[index].image, liste[index].description,liste[index].titre,liste: liste[index]);
+
+              },
+
+            );
+
+          }
+      );
+    }
 
 
 
