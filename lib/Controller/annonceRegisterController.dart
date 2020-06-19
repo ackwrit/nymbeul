@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nymbeul/Controller/connexionController.dart';
 import 'package:nymbeul/main.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
 
@@ -38,10 +40,10 @@ class homeAnnonce extends State<annonceRegisterController>{
 
   Widget _Body(){
     return  new Container(
-      padding: EdgeInsets.all(20),
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
+          padding: EdgeInsets.all(20),
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
               Text("Type d'annonce"),
               DropdownButton(
                   onChanged: (String newValue){
@@ -49,104 +51,121 @@ class homeAnnonce extends State<annonceRegisterController>{
                       dropdownValue =newValue;
                     });
                   },
-                value: dropdownValue,
-                items:annonceListing.map<DropdownMenuItem<String>>((String value){
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value,textAlign: TextAlign.center,),
-                  );
+                  value: dropdownValue,
+                  items:annonceListing.map<DropdownMenuItem<String>>((String value){
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value,textAlign: TextAlign.center,),
+                    );
 
-                }).toList()
+                  }).toList()
               ),
 
 
-          TextField(
-            textAlign: TextAlign.center,
-            onChanged: (String text)
-            {
-              setState(() {
-                titre=text;
-              });
+              TextField(
+                textAlign: TextAlign.center,
+                onChanged: (String text)
+                {
+                  setState(() {
+                    titre=text;
+                  });
 
-            },
-
-
-            decoration: InputDecoration(
+                },
 
 
+                decoration: InputDecoration(
 
 
-                hintText: 'Entrer votre titre',
-
-              filled: true,
-              fillColor: Colors.white,
 
 
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                  hintText: 'Entrer votre titre',
+
+                  filled: true,
+                  fillColor: Colors.white,
+
+
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+
+                  ),
+
+
+
+
+                ),
+
+
 
               ),
+              TextField(
+                onChanged: (String text){
+                  setState(() {
+                    contenu =text;
+                  });
+                },
+                textAlign: TextAlign.center,
+                maxLines: 4,
+
+
+                decoration: InputDecoration(
 
 
 
 
-            ),
+                  hintText: 'Entrer votre annonce',
+
+                  filled: true,
+                  fillColor: Colors.white,
 
 
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
 
-          ),
-          TextField(
-            onChanged: (String text){
-              setState(() {
-                contenu =text;
-              });
-            },
-            textAlign: TextAlign.center,
-            maxLines: 10,
-
-
-            decoration: InputDecoration(
+                  ),
 
 
 
 
-              hintText: 'Entrer votre annonce',
-
-              filled: true,
-              fillColor: Colors.white,
+                ),
 
 
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
 
               ),
+              RaisedButton(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                onPressed: (){
+
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context){
+                        return StreamBuilder <FirebaseUser>(
+                          stream: FirebaseAuth.instance.onAuthStateChanged,
+                            builder: (BuildContext context,snapshot)
+                                {
+                                  if(snapshot.hasData){
+                                    fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue,"non");
+                                    return MyApp();
+
+                                  }
+                                  else
+                                    {
+                                      return connexionController();
+                                    }
+                                }
+                        );
+
+                      }
+                  ));
 
 
+                },
+                child: Text('Enregistrer'),
+              )
+            ],
 
-
-            ),
-
-
-
-          ),
-          RaisedButton(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              onPressed: (){
-              fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue,"non");
-              Navigator.push(context, MaterialPageRoute(
-                builder: (BuildContext context){
-                  return MyApp();
-                }
-              ));
-
-
-              },
-            child: Text('Enregistrer'),
           )
-        ],
 
-      )
     );
+
 
   }
 

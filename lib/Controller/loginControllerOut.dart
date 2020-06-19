@@ -18,29 +18,12 @@ class loginControllerOut extends StatefulWidget{
 }
 
 class homeLoginOut extends State<loginControllerOut>{
+  PageController pageController=PageController(initialPage: 0);
+  int bottomSelectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    if(Theme.of(context).platform==TargetPlatform.iOS)
-    {
-      return new CupertinoTabScaffold(
-          tabBar: new CupertinoTabBar(
-              backgroundColor: Colors.blue,
-              activeColor: Colors.black,
-              inactiveColor: Colors.white,
-              items:[
-                new BottomNavigationBarItem(icon: new Icon(Icons.comment),title: new Text('Petites Annonces')),
-                new BottomNavigationBarItem(icon: new Icon(Icons.directions_bus),title: new Text('Transport')),
-                new BottomNavigationBarItem(icon: new Icon(Icons.account_balance),title: new Text("Administration")),
-                new BottomNavigationBarItem(icon: new Icon(Icons.local_hospital),title: new Text('Adresses utiles')),
-                new BottomNavigationBarItem(icon: new Icon(Icons.beach_access),title: new Text('Loisirs')),
 
-
-
-
-              ]),
-          tabBuilder: (BuildContext context,int index){
-            Widget controllerSelected= controllers()[index];
             return new Scaffold(
               appBar: new AppBar(
                 actions: <Widget>[
@@ -51,53 +34,66 @@ class homeLoginOut extends State<loginControllerOut>{
                 title: Image.asset('assets/nymbeul_logo.png',height: 200,width: 600,),
 
                 backgroundColor: Colors.blue,
-                flexibleSpace: ClipPath(),
 
-                elevation: 0.0,
+
+
               ),
-              extendBody: true,
-              body: controllerSelected,
+              body: PageView(
+                controller: pageController,
+                onPageChanged: (index)
+                {
+                  pageChanged(index);
+                },
+
+                children: [
+                  new annonceController(),
+                  new transportController(),
+                  new administrationController(),
+                  new adresseController(),
+                  new loisirController(),
+                ],
+              ),
+
+              bottomNavigationBar: Theme(
+                  data: Theme.of(context).copyWith(
+                      canvasColor: Colors.blue,
+                      primaryColor: Colors.black,
+                      textTheme: Theme.of(context).textTheme.copyWith(
+                          caption: TextStyle(color: Colors.orange)
+                      )
+                  ),
+                  child: BottomNavigationBar(
+
+
+                currentIndex: bottomSelectedIndex,
+                selectedItemColor: Colors.black,
 
 
 
-            );
-          }
-      );
-    }
-    else
-    {
-      return new DefaultTabController(
-        length: 5,
-        child: new Scaffold(
-          appBar: new AppBar(
-            backgroundColor: Colors.blue,
-            title: Text('Nymbeul'),
-            centerTitle: true,
-            actions: <Widget>[
-              new IconButton(icon:Icon(Icons.account_circle,size: 32.0,color: Colors.white,), onPressed:connexion),
 
-            ],
-            bottom: new TabBar(
-                tabs: [
-                  new Tab(icon: new Icon(Icons.comment),),
-                  new Tab(icon: new Icon(Icons.directions_bus),),
-                  new Tab(icon: new Icon(Icons.account_balance),),
 
-                  new Tab(icon: new Icon(Icons.local_hospital),),
-                  new Tab(icon: new Icon(Icons.beach_access),),
+                onTap: (index){
+                  bottomTapped(index);
+
+                },
+                items: [
+                  new BottomNavigationBarItem(icon: new Icon(Icons.comment),title: new Text('Petites Annonces',)),
+                  new BottomNavigationBarItem(icon: new Icon(Icons.directions_bus),title: new Text('Transport')),
+                  new BottomNavigationBarItem(icon: new Icon(Icons.account_balance),title: new Text("Administration")),
+                  new BottomNavigationBarItem(icon: new Icon(Icons.local_hospital),title: new Text('Adresses utiles')),
+                  new BottomNavigationBarItem(icon: new Icon(Icons.beach_access),title: new Text('Loisirs')),
+
+                ],
+                backgroundColor: Colors.blue,
+
+              ),
 
 
 
+            ))
+            ;
 
-                ]),
-          ),
-          body: new TabBarView(
-            children: controllers(),
-          ),
-        ),
 
-      );
-    }
   }
 
 
@@ -109,6 +105,13 @@ class homeLoginOut extends State<loginControllerOut>{
         onPressed: direction
     );
 
+  }
+
+
+  void pageChanged(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+    });
   }
 
   void connexion() {
@@ -127,19 +130,13 @@ class homeLoginOut extends State<loginControllerOut>{
 
 
 
-  List <Widget> controllers (){
-    return [
-      new annonceController(),
-      new transportController(),
-      new administrationController(),
-      new adresseController(),
-      new loisirController(),
 
 
-
-
-    ];
-
+  void bottomTapped(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+      pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.ease);
+    });
   }
 
 }

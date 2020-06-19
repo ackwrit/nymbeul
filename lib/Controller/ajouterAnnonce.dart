@@ -89,7 +89,7 @@ class homeAjouter extends State<ajouterAnnonce>{
                 });
               },
               textAlign: TextAlign.center,
-              maxLines: 10,
+              maxLines: 4,
 
 
               decoration: InputDecoration(
@@ -104,7 +104,7 @@ class homeAjouter extends State<ajouterAnnonce>{
 
 
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(10),
 
                 ),
 

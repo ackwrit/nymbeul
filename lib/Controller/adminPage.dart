@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/ajouterAnnonce.dart';
+import 'package:nymbeul/Controller/connexionController.dart';
 import 'package:nymbeul/Controller/listeAnnonce.dart';
 import 'package:nymbeul/Controller/loginControllerOut.dart';
 import 'package:nymbeul/Controller/profilPage.dart';
@@ -16,85 +17,119 @@ class adminPage extends StatefulWidget{
 }
 
 class homeAdmin extends State<adminPage>{
+  PageController pageController=PageController(initialPage: 0);
+  int bottomSelectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-   if(Theme.of(context).platform==TargetPlatform.iOS){
-     return iosConfig();
+
+     return new Scaffold(
+       appBar: new AppBar(
+         leading: IconButton(
+             icon: Icon(Icons.clear),
+             onPressed: ()
+             {
+               fireBaseHelper().auth.signOut();
+               Navigator.push(context, MaterialPageRoute(
+                   builder: (BuildContext context){
+                     return loginControllerOut();
+                   }
+               ));
+             }
+         ),
+         actions: <Widget>[
+           new IconButton(icon:Icon(Icons.account_circle,size: 32.0,color: Colors.white,), onPressed:connexion),
+
+         ],
+
+         title: Image.asset('assets/nymbeul_logo.png',height: 200,width: 600,),
+
+         backgroundColor: Colors.blue,
+
+
+
+       ),
+       body: PageView(
+         controller: pageController,
+         onPageChanged: (index)
+         {
+           pageChanged(index);
+         },
+         children: [
+           profilPage(),
+           listeAnnonce(),
+           ajouterAnnonce(),
+           ajouterAnnonce(),
+         ],
+       ),
+
+       bottomNavigationBar: Theme(
+           data: Theme.of(context).copyWith(
+               canvasColor: Colors.blue,
+               primaryColor: Colors.black,
+               textTheme: Theme.of(context).textTheme.copyWith(
+                   caption: TextStyle(color: Colors.orange)
+               )
+           ),
+           child: BottomNavigationBar(
+
+
+         currentIndex: bottomSelectedIndex,
+         selectedItemColor: Colors.black,
+
+         backgroundColor: Colors.blue,
+
+
+
+         onTap: (index){
+           bottomTapped(index);
+
+         },
+         items: [
+           new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
+           new BottomNavigationBarItem(icon: new Icon(Icons.format_list_bulleted),title: new Text('Annonce')),
+           new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajouter Annonce')),
+           new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajout publicitaire'))
+
+         ],
+
+       ),
+
+
+
+     )
+     );
+
   }
-   else
-     {
-       return androidConfig();
-     }
+
+
+  void bottomTapped(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+      pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.ease);
+    });
+  }
+
+  void pageChanged(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+    });
   }
 
 
 
-  Widget iosConfig()
-  {
-    return new CupertinoTabScaffold(
-        tabBar: new CupertinoTabBar(
-            backgroundColor: Colors.blue[100],
-            activeColor: Colors.black,
-            inactiveColor: Colors.white,
-            items:[
-              new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
-              new BottomNavigationBarItem(icon: new Icon(Icons.format_list_bulleted),title: new Text('Annonce')),
-              new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajouter Annonce'))
 
 
 
 
 
-
-
-
-            ]),
-        tabBuilder: (BuildContext context,int index){
-          Widget controllerSelected= controllers()[index];
-          return new Scaffold(
-            appBar: new AppBar(
-              leading: IconButton(
-                  icon: Icon(Icons.clear),
-                  onPressed: ()
-                  {
-                    fireBaseHelper().auth.signOut();
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (BuildContext context){
-                          return loginControllerOut();
-                        }
-                    ));
-                  }
-              ),
-              actions: [
-                IconButton(icon:Icon(Icons.account_circle), onPressed:()
-                {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context)
-                      {
-                        return adminPage();
-                      }
-                  ));
-
-                }
-                )
-              ],
-
-              title: Image.asset("assets/nymbeul_logo.png",height: 170,width: 600,),
-              backgroundColor: Colors.blue[100],),
-            body: controllerSelected,
-
-
-          );
+  void connexion() {
+    Navigator.push(context,new MaterialPageRoute(
+        builder: (BuildContext context)
+        {
+          return connexionController();
         }
-    );
-  }
-
-
-
-
-  Widget androidConfig(){
-
+    ));
   }
 
 
@@ -105,6 +140,7 @@ class homeAdmin extends State<adminPage>{
     return [
       profilPage(),
       listeAnnonce(),
+      ajouterAnnonce(),
       ajouterAnnonce(),
 
 
