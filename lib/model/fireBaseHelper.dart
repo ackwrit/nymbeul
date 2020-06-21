@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -60,6 +63,7 @@ class fireBaseHelper {
   static final base=FirebaseDatabase.instance.reference();
   final base_user=base.child("users");
   final base_message =base.child("messages");
+  final base_pub=base.child("pub");
 
 
   addUsers(String uid,Map map)
@@ -90,6 +94,20 @@ class fireBaseHelper {
 
   }
 
+  ajoutPub(String uid,String titre,String image,String dateDebut,String datefin)
+  {
+    Map map ={
+      "uid":uid,
+      "titre":titre,
+      "image":image,
+      "dateDebut":dateDebut,
+      "datefin":datefin
+
+    };
+    base_pub.child(uid).set(map);
+
+  }
+
 
   Future<user> getUser(String uid) async
   {
@@ -98,6 +116,15 @@ class fireBaseHelper {
   }
 
 
+  //storage
+  static final base_storage = FirebaseStorage.instance.ref();
+  final StorageReference storage_publicite = base_storage.child("publicite");
 
+  Future <String> savePicture(File file,StorageReference storageReference) async{
+    StorageUploadTask storageUploadTask = storageReference.putFile(file);
+    StorageTaskSnapshot snapshot = await storageUploadTask.onComplete;
+    String url = await snapshot.ref.getDownloadURL();
+    return url;
+  }
 
 }

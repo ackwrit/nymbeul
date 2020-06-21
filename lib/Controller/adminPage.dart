@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/ajouterAnnonce.dart';
+import 'package:nymbeul/Controller/ajouterPublicite.dart';
 import 'package:nymbeul/Controller/connexionController.dart';
 import 'package:nymbeul/Controller/listeAnnonce.dart';
 import 'package:nymbeul/Controller/loginControllerOut.dart';
@@ -59,7 +60,7 @@ class homeAdmin extends State<adminPage>{
            profilPage(),
            listeAnnonce(),
            ajouterAnnonce(),
-           ajouterAnnonce(),
+           ajouterPublicite(),
          ],
        ),
 
@@ -89,7 +90,7 @@ class homeAdmin extends State<adminPage>{
            new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
            new BottomNavigationBarItem(icon: new Icon(Icons.format_list_bulleted),title: new Text('Annonce')),
            new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajouter Annonce')),
-           new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajout publicitaire'))
+           new BottomNavigationBarItem(icon: new Icon(Icons.event_note),title: new Text('Ajout publicitaire'))
 
          ],
 
@@ -141,7 +142,7 @@ class homeAdmin extends State<adminPage>{
       profilPage(),
       listeAnnonce(),
       ajouterAnnonce(),
-      ajouterAnnonce(),
+      ajouterPublicite(),
 
 
 
