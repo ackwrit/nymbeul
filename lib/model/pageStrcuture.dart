@@ -146,7 +146,12 @@ class structureState extends State<pageStructure>{
     super.initState();
     choixDestination();
     listeChoix();
-    configuration();
+    if(widget.titre=='Dakar en voiture')
+      {
+        configuration();
+      }
+
+
 
   }
   openMapsSheet(context) async {
@@ -231,7 +236,12 @@ class structureState extends State<pageStructure>{
 
 
   configuration() async {
-    position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+        position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+
+
+
 
 
   }
@@ -253,6 +263,7 @@ class structureState extends State<pageStructure>{
       return _BodyList();
     }
     if(widget.titre=='Dakar en voiture'){
+      //configuration();
       return launcherMap();
     }
   }
