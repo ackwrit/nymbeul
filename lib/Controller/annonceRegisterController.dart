@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/connexionController.dart';
 import 'package:nymbeul/main.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
+import 'package:random_string/random_string.dart';
 
 class annonceRegisterController extends StatefulWidget{
   @override
@@ -17,7 +18,8 @@ class homeAnnonce extends State<annonceRegisterController>{
   String dropdownValue='Jobs';
   String titre;
   String contenu;
-  List<String>annonceListing=["Jobs","Les offres de service","Evènements Religieux","Annonce diverses"];
+  String identifiant;
+  List<String>annonceListing=["Jobs","Les offres de service","Evènements Religieux","Annonces diverses"];
   @override
   void initState() {
     // TODO: implement initState
@@ -26,6 +28,7 @@ class homeAnnonce extends State<annonceRegisterController>{
   }
   @override
   Widget build(BuildContext context) {
+    identifiant =randomAlphaNumeric(25);
     // TODO: implement build
     return new Scaffold(
       appBar: AppBar(
@@ -142,7 +145,7 @@ class homeAnnonce extends State<annonceRegisterController>{
                             builder: (BuildContext context,snapshot)
                                 {
                                   if(snapshot.hasData){
-                                    fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue,"non");
+                                    fireBaseHelper().sendMessage(titre, contenu, identifiant, dropdownValue,"non");
                                     return MyApp();
 
                                   }

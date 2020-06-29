@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:nymbeul/Controller/loginControllerOut.dart';
 import 'package:nymbeul/Controller/loisirController.dart';
 import 'package:nymbeul/main.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
@@ -140,7 +141,7 @@ class homeRegister extends State<registerController>
         Navigator.push(context, new MaterialPageRoute(
           builder: (BuildContext context)
           {
-            return loisirController();
+            return loginControllerOut();
           }
         ));
 

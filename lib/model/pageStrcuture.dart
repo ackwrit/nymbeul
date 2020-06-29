@@ -20,6 +20,7 @@ import 'package:nymbeul/model/message.dart';
 
 import 'package:nymbeul/widget/annonce.dart';
 import 'package:platform_maps_flutter/platform_maps_flutter.dart';
+import 'package:search_map_place/search_map_place.dart';
 
 
 import 'ligne.dart';
@@ -277,7 +278,7 @@ class structureState extends State<pageStructure>{
             return Column(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height/1.5,
+                  height: MediaQuery.of(context).size.height/1.8,
                   child: PlatformMap(
                     initialCameraPosition : CameraPosition(
                       target: LatLng(0, 0),
@@ -285,7 +286,7 @@ class structureState extends State<pageStructure>{
                     myLocationEnabled: true,
                     myLocationButtonEnabled: true,
                     onMapCreated: (controller){
-                      Future.delayed(Duration(seconds: 5)).then((_)
+                      Future.delayed(Duration(seconds: 2)).then((_)
                       {
                         controller.animateCamera(
                             CameraUpdate.newCameraPosition(
@@ -301,10 +302,22 @@ class structureState extends State<pageStructure>{
                 ),
 
 
+                Padding(padding: EdgeInsets.all(10),),
+
+                SearchMapPlaceWidget(
+                  apiKey: "AIzaSyBuawkYwnpFPLqRpFWzGE3aIvUdlezKkjc",
+                  language: "fr",
+                  placeType: PlaceType.geocode,
+                  placeholder: "Où souhaitez-vous aller ?",
+                  icon: Icons.map,
+
+                ),
+                Padding(padding: EdgeInsets.all(5),),
                 MaterialButton(
                   onPressed: () => openMapsSheet(context),
-                  child: Text('Où souhaitez-vous aller ? '),
-                )
+                  child: Text('Cliquer'),
+                ),
+
               ],
             );
 
