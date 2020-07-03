@@ -1,8 +1,12 @@
 
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/administrationController.dart';
 import 'package:nymbeul/Controller/signalementTrafficController.dart';
 import 'package:nymbeul/Fonction/datas.dart';
+import 'package:nymbeul/model/fireBaseHelper.dart';
+import 'package:nymbeul/model/publicite.dart';
 import 'package:nymbeul/model/section.dart';
 
 
@@ -84,6 +88,32 @@ class transportControllerState extends State<transportController>{
               ));
             },
             child: Text('Signalement traffic',style: TextStyle(color: Colors.amber),),
+          ),
+          Padding(padding: EdgeInsets.all(25)),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height/6,
+            padding: EdgeInsets.all(5),
+
+            child: FirebaseAnimatedList(
+                query: fireBaseHelper().base_pub,
+                itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
+                  publicite pub = publicite(snapshot);
+                  return Container(
+                    height: 100.0,
+                    child: Card(
+                        elevation: 10.0,
+                        child: new Center(
+                            child:Text(pub.titre)
+                        )
+                    ),
+                  );
+
+
+
+
+                }
+            ),
           )
         ],
 

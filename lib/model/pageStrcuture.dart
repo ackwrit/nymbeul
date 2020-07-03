@@ -8,6 +8,7 @@ import 'package:map_launcher/map_launcher.dart';
 
 import 'package:nymbeul/Controller/detailAnnonceController.dart';
 import 'package:nymbeul/Controller/detailLigne.dart';
+import 'package:nymbeul/Controller/loginControllerOut.dart';
 
 import 'package:nymbeul/Fonction/datas.dart';
 
@@ -154,6 +155,7 @@ class structureState extends State<pageStructure>{
 
 
 
+
   }
   openMapsSheet(context) async {
     try {
@@ -238,7 +240,12 @@ class structureState extends State<pageStructure>{
 
   configuration() async {
 
-        position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+    position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+
+
+
 
 
 
@@ -277,8 +284,18 @@ class structureState extends State<pageStructure>{
           builder: (context) {
             return Column(
               children: [
+                Padding(padding: EdgeInsets.all(5),),
+                SearchMapPlaceWidget(
+                  apiKey: "AIzaSyBuawkYwnpFPLqRpFWzGE3aIvUdlezKkjc",
+                  language: "fr",
+                  placeType: PlaceType.geocode,
+                  placeholder: "Où souhaitez-vous aller ?",
+                  icon: Icons.map,
+
+                ),
+                Padding(padding: EdgeInsets.all(5),),
                 Container(
-                  height: MediaQuery.of(context).size.height/1.8,
+                  height: MediaQuery.of(context).size.height/2,
                   child: PlatformMap(
                     initialCameraPosition : CameraPosition(
                       target: LatLng(0, 0),
@@ -304,15 +321,7 @@ class structureState extends State<pageStructure>{
 
                 Padding(padding: EdgeInsets.all(10),),
 
-                SearchMapPlaceWidget(
-                  apiKey: "AIzaSyBuawkYwnpFPLqRpFWzGE3aIvUdlezKkjc",
-                  language: "fr",
-                  placeType: PlaceType.geocode,
-                  placeholder: "Où souhaitez-vous aller ?",
-                  icon: Icons.map,
 
-                ),
-                Padding(padding: EdgeInsets.all(5),),
                 MaterialButton(
                   onPressed: () => openMapsSheet(context),
                   child: Text('Cliquer'),
@@ -374,6 +383,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -411,6 +421,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -450,6 +461,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -488,6 +500,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -526,6 +539,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -563,6 +577,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -599,6 +614,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -639,6 +655,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -678,6 +695,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -720,6 +738,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -761,6 +780,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -804,6 +824,7 @@ class structureState extends State<pageStructure>{
       return FirebaseAnimatedList(
 
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -851,6 +872,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -892,6 +914,7 @@ class structureState extends State<pageStructure>{
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
 
@@ -977,6 +1000,7 @@ class structureState extends State<pageStructure>{
 
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
+        defaultChild: messageVide(),
         itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation <double> animation,int index){
           message mess =message(snapshot);
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
@@ -1057,6 +1081,13 @@ class structureState extends State<pageStructure>{
 
 
 
+  }
+
+  Widget messageVide()
+  {
+    return new Center(
+      child: Text("Actuellement, il n'y a aucune annonce dans cette rubrique"),
+    );
   }
 
 

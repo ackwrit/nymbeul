@@ -47,8 +47,9 @@ class profilHome extends State<profilPage>{
   {
     if(utilisateur==null)
       {
-        return Center(
-          child: CircularProgressIndicator(),
+        return Container(
+            height: MediaQuery.of(context).size.height,
+          child: Image.asset('assets/LOGOV2.jpg',fit: BoxFit.cover,)
         );
       }
     else

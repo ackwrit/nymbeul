@@ -30,34 +30,13 @@ class _connexion extends State<connexionController>
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new CupertinoTabScaffold(
-        tabBar: new CupertinoTabBar(
-            backgroundColor: Colors.blue,
-            activeColor: Colors.black,
-            inactiveColor: Colors.white,
-            items:[
-              new BottomNavigationBarItem(icon: new Icon(Icons.account_balance),),
-              new BottomNavigationBarItem(icon: new Icon(Icons.local_hospital),),
-              new BottomNavigationBarItem(icon: new Icon(Icons.beach_access),),
+    return new Scaffold(
+      appBar: AppBar(
+        title: Text('Nymbeul'),
 
+      ),
+      body: body(),
 
-              new BottomNavigationBarItem(icon: new Icon(Icons.directions_bus),),
-              new BottomNavigationBarItem(icon: new Icon(Icons.comment),),
-            ]),
-        tabBuilder: (BuildContext context,int index){
-          Widget controllerSelected= controllers()[index];
-          return new Scaffold(
-            appBar: new AppBar(
-              actions: <Widget>[
-                new IconButton(icon:Icon(Icons.account_circle,size: 32.0,color: Colors.white,), onPressed:connexion),
-
-              ],
-
-              title: Text("Nymbeul"), backgroundColor: Colors.blue,),
-            body: body(),
-
-          );
-        }
     );
   }
 

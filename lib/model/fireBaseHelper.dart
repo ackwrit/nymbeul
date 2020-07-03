@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:nymbeul/model/message.dart';
+import 'package:nymbeul/model/publicite.dart';
 import 'dart:async';
 import 'package:nymbeul/model/user.dart';
 
@@ -113,6 +114,12 @@ class fireBaseHelper {
   {
     DataSnapshot snapshot = await base_user.child(uid).once();
     return user(snapshot);
+  }
+
+  Future<publicite> getPublicite(String uid) async
+  {
+    DataSnapshot snapshot = await base_pub.child(uid).once();
+    return publicite(snapshot);
   }
 
 
