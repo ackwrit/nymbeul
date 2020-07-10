@@ -1,9 +1,13 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/administrationController.dart';
 import 'package:nymbeul/Controller/annonceRegisterController.dart';
+import 'package:nymbeul/Controller/connexionController.dart';
+import 'package:nymbeul/Controller/loginControllerOut.dart';
 import 'package:nymbeul/Fonction/datas.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
 import 'package:nymbeul/model/publicite.dart';
@@ -22,6 +26,8 @@ class annonceController extends StatefulWidget{
 
 class annonceControllerState extends State<annonceController>{
   int index=0;
+  double taille;
+  List <publicite>publicitaire=[];
 
 
 
@@ -86,7 +92,25 @@ class annonceControllerState extends State<annonceController>{
               Navigator.push(context, new MaterialPageRoute(
                   builder: (BuildContext context)
                       {
-                        return annonceRegisterController();
+
+                        return StreamBuilder <FirebaseUser>(
+                          stream: FirebaseAuth.instance.onAuthStateChanged,
+                          builder: (BuildContext context,snapshot){
+                            if(snapshot.hasData)
+                            {
+                              //Si on a des datas , on est authentifié
+                              return annonceRegisterController();
+                            }
+                            else
+                            {
+                              //on est n'est pas off page sans connexion
+                              return connexionController(valeur: 1,);
+                              //loginControllerOut();
+                            }
+                          },
+
+                        );
+
                       }
               ));
             }
@@ -99,14 +123,19 @@ class annonceControllerState extends State<annonceController>{
 
           child: FirebaseAnimatedList(
               query: fireBaseHelper().base_pub,
+              scrollDirection: Axis.horizontal,
+
               itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
                 publicite pub = publicite(snapshot);
+
+
                 return Container(
                   height: 100.0,
+                  width: MediaQuery.of(context).size.width-60,
                   child: Card(
-                      elevation: 10.0,
+                      elevation: 5.0,
                       child: new Center(
-                          child:Text(pub.titre)
+                          child:Text("${pub.titre}")
                       )
                   ),
                 );
@@ -124,6 +153,8 @@ class annonceControllerState extends State<annonceController>{
     );
 
   }
+
+
 
 /////
 

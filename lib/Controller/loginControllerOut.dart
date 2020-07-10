@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nymbeul/Controller/adminPage.dart';
 import 'package:nymbeul/Controller/annonceController.dart';
 import 'package:nymbeul/Controller/transportController.dart';
 
@@ -118,7 +120,23 @@ class homeLoginOut extends State<loginControllerOut>{
     Navigator.push(context,new MaterialPageRoute(
         builder: (BuildContext context)
         {
-          return connexionController();
+          return StreamBuilder <FirebaseUser>(
+            stream: FirebaseAuth.instance.onAuthStateChanged,
+            builder: (BuildContext context,snapshot){
+              if(snapshot.hasData)
+              {
+                //Si on a des datas , on est authentifié
+                return adminPage();
+              }
+              else
+              {
+                //on est n'est pas off page sans connexion
+                return connexionController();
+              }
+            },
+
+          );
+
         }
     ));
   }

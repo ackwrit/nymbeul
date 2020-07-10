@@ -6,6 +6,7 @@ import 'package:nymbeul/Controller/connexionController.dart';
 import 'package:nymbeul/Controller/listeAnnonce.dart';
 import 'package:nymbeul/Controller/loginControllerOut.dart';
 import 'package:nymbeul/Controller/profilPage.dart';
+import 'package:nymbeul/Controller/validationAnnonce.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
 
 class adminPage extends StatefulWidget{
@@ -39,11 +40,11 @@ class homeAdmin extends State<adminPage>{
              }
          ),
          actions: <Widget>[
-           new IconButton(icon:Icon(Icons.account_circle,size: 32.0,color: Colors.white,), onPressed:connexion),
+          new IconButton(icon:Icon(Icons.home,size: 32.0,color: Colors.white,), onPressed:connexion),
 
          ],
 
-         title: Image.asset('assets/nymbeul_logo.png',height: 200,width: 600,),
+         title: Text('Administration'),
 
          backgroundColor: Colors.blue,
 
@@ -59,6 +60,7 @@ class homeAdmin extends State<adminPage>{
          children: [
            profilPage(),
            listeAnnonce(),
+           validationAnnonce(),
            ajouterAnnonce(),
            ajouterPublicite(),
          ],
@@ -89,6 +91,7 @@ class homeAdmin extends State<adminPage>{
          items: [
            new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
            new BottomNavigationBarItem(icon: new Icon(Icons.format_list_bulleted),title: new Text('Annonce')),
+           new BottomNavigationBarItem(icon: new Icon(Icons.playlist_add_check),title: new Text('Validation')),
            new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajouter Annonce')),
            new BottomNavigationBarItem(icon: new Icon(Icons.event_note),title: new Text('Ajout publicitaire'))
 
@@ -128,7 +131,7 @@ class homeAdmin extends State<adminPage>{
     Navigator.push(context,new MaterialPageRoute(
         builder: (BuildContext context)
         {
-          return connexionController();
+          return loginControllerOut();
         }
     ));
   }

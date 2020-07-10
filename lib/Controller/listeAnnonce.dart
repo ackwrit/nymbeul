@@ -24,11 +24,9 @@ class homeListeAnnonce extends State<listeAnnonce>{
      width: MediaQuery.of(context).size.width,
      child: FirebaseAnimatedList(
          query: fireBaseHelper().base_message,
-         defaultChild: message_vide(),
          itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
            message annon = message(snapshot);
-           if(annon.validate=='non')
-             {
+
                return ListTile(
                  title: Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +37,7 @@ class homeListeAnnonce extends State<listeAnnonce>{
                          onPressed: (){
                            Navigator.push(context, MaterialPageRoute(
                                builder: (BuildContext context){
-                                 return detailAnnonce(annonce: annon,);
+                                 return detailAnnonce(annonce: annon,validate: true,);
                                }
                            ));
                          }
@@ -56,13 +54,9 @@ class homeListeAnnonce extends State<listeAnnonce>{
                  ),
                );
              }
-           else
-             {
-               return Container(
-               );
-             }
 
-         }
+
+
      )
 
    );

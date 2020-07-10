@@ -15,6 +15,11 @@ import 'annonceController.dart';
 import 'loisirController.dart';
 
 class connexionController extends StatefulWidget{
+  int valeur;
+  connexionController({int valeur})
+  {
+    this.valeur=valeur;
+  }
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -44,11 +49,13 @@ class _connexion extends State<connexionController>
 
 
   Widget body(){
+
     return new SingleChildScrollView(
       child: new Center(
           child:new Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+              (widget.valeur==1)? affichageSnackBar():Container(),
               new Container(
                 height: MediaQuery.of(context).size.height/2,
                 width: MediaQuery.of(context).size.width/1.2,
@@ -136,6 +143,47 @@ class _connexion extends State<connexionController>
           return adminPage();
         }
     ));
+  }
+
+
+
+  affichageSnackBar()
+  {
+
+    return Container(
+      padding: EdgeInsets.all(15),
+        child:Text('Pour pouvoir déposer une annonce, merci de vous inscrire ou vous connecter',style: TextStyle(fontSize: 20),)
+    );
+
+
+
+  }
+
+
+  Future <Null> showDialogue() async {
+    return  showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context)
+        {
+          return AlertDialog(
+            title: Text('Identification'),
+            content: Text('Pour pouvoir déposer une annonce, merci de vous inscrire ou vous connecter'),
+            actions: [
+              FlatButton(
+                onPressed: ()
+                {
+                  Navigator.pop(context);
+                  },
+                child: Text("OK"),
+              )
+            ],
+          );
+        }
+
+
+    );
+
   }
 
 

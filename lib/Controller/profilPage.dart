@@ -48,8 +48,12 @@ class profilHome extends State<profilPage>{
     if(utilisateur==null)
       {
         return Container(
+          padding: EdgeInsets.all(10),
             height: MediaQuery.of(context).size.height,
-          child: Image.asset('assets/LOGOV2.jpg',fit: BoxFit.cover,)
+          width: MediaQuery.of(context).size.width,
+          child: Image.asset('assets/senegal_amoirie.png',fit: BoxFit.fill,),
+          
+
         );
       }
     else

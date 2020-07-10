@@ -77,32 +77,8 @@ class loisirControllerState extends State<loisirController>{
                 shrinkWrap: true,
                 itemCount: section_list.length),
 
-            Padding(padding: EdgeInsets.all(25)),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/6,
-              padding: EdgeInsets.all(5),
-
-              child: FirebaseAnimatedList(
-                  query: fireBaseHelper().base_pub,
-                  itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
-                    publicite pub = publicite(snapshot);
-                    return Container(
-                      height: 100.0,
-                      child: Card(
-                          elevation: 10.0,
-                          child: new Center(
-                              child:Text(pub.titre)
-                          )
-                      ),
-                    );
 
 
-
-
-                  }
-              ),
-            )
           ],
 
         )

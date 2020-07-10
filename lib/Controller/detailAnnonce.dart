@@ -1,14 +1,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/adminPage.dart';
+import 'package:nymbeul/Controller/validationAnnonce.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
 import 'package:nymbeul/model/message.dart';
 import 'package:nymbeul/widget/annonce.dart';
 
 class detailAnnonce extends StatefulWidget{
   message annonce;
-  detailAnnonce({message annonce}){
+  bool validate;
+
+  detailAnnonce({message annonce,bool validate}){
     this.annonce = annonce;
+    this.validate=validate;
   }
   @override
   State<StatefulWidget> createState() {
@@ -24,7 +28,8 @@ class deailHome extends State<detailAnnonce>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[100],
+        title: (widget.validate==false)?Text("Validation d'annonce"):Text("Liste d'annonce"),
+        backgroundColor: Colors.blue,
 
       ),
       body: bodyPage(),
@@ -49,7 +54,7 @@ class deailHome extends State<detailAnnonce>{
             Padding(padding: EdgeInsets.all(30),),
 
 
-            FlatButton(
+            (widget.validate==false)?FlatButton(
                 onPressed: ()
                 {
                   Map map ={
@@ -70,7 +75,7 @@ class deailHome extends State<detailAnnonce>{
                   ));
 
                 },
-                child: Text("Validation de l'annonce"))
+                child: Text("Validation de l'annonce")):Container()
 
           ],
         ),

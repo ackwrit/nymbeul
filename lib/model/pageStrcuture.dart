@@ -2,6 +2,8 @@
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:map_launcher/map_launcher.dart';
@@ -18,6 +20,7 @@ import 'package:nymbeul/model/herowidget.dart';
 import 'package:nymbeul/model/element.dart';
 import 'package:nymbeul/listing/enumeration.dart';
 import 'package:nymbeul/model/message.dart';
+import 'package:nymbeul/model/publicite.dart';
 
 import 'package:nymbeul/widget/annonce.dart';
 import 'package:platform_maps_flutter/platform_maps_flutter.dart';
@@ -50,6 +53,9 @@ class pageStructure extends StatefulWidget {
 class structureState extends State<pageStructure>{
   Position position;
   final availableMaps = MapLauncher.installedMaps;
+  DateTime jour=DateTime.now();
+  double taille;
+
 
   enumeration choix;
   List  liste=[];
@@ -152,6 +158,7 @@ class structureState extends State<pageStructure>{
       {
         configuration();
       }
+    //taille=MediaQuery.of(context).size.width-60;
 
 
 
@@ -1078,6 +1085,61 @@ class structureState extends State<pageStructure>{
           }
       );
     }
+    if(widget.titre=="Etats du trafic")
+      {
+
+        return GestureDetector(
+          onTap:(){
+            setState(() {
+              taille=0;
+            });
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text("Infos trafic du ${jour.day}/${jour.month}/${jour.year}"),
+              Text("Il n'y a aucun icident actuellement sur le trafic"),
+              Padding(padding: EdgeInsets.all(10),),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height/6,
+                padding: EdgeInsets.all(5),
+
+                child: FirebaseAnimatedList(
+                    query: fireBaseHelper().base_pub,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.all(10),
+                    scrollDirection: Axis.horizontal,
+
+                    duration: Duration(seconds: 10),
+                    itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
+                      publicite pub = publicite(snapshot);
+
+
+                      return Container(
+
+                        height: 100.0,
+                        width: MediaQuery.of(context).size.width-60,
+                        child: Card(
+                            elevation: 5.0,
+                            child: new Center(
+                                child:Text(pub.titre)
+                            )
+                        ),
+                      );
+
+
+
+
+                    }
+                ),
+              )
+            ],
+          )
+        );
+
+
+      }
 
 
 

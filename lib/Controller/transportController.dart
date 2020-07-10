@@ -97,10 +97,12 @@ class transportControllerState extends State<transportController>{
 
             child: FirebaseAnimatedList(
                 query: fireBaseHelper().base_pub,
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context,DataSnapshot snapshot,Animation<double>animation,int index){
                   publicite pub = publicite(snapshot);
                   return Container(
                     height: 100.0,
+                    width: MediaQuery.of(context).size.width-60,
                     child: Card(
                         elevation: 10.0,
                         child: new Center(

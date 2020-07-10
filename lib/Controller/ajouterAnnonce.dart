@@ -12,7 +12,7 @@ class ajouterAnnonce extends StatefulWidget{
 }
 
 class homeAjouter extends State<ajouterAnnonce>{
-  List<String>annonceListing=["Jobs","Les offres de service","Evènements Religieux","Annonce diverses","Concours","Préfecture","Mairie","Commissariat","Hopitaux","Pharmacie","Ecoles et Insitutions","Banques","Bars et Restaurants","Parcs et Jardins","Evènements culturels et Sportifs","Divers"];
+  List<String>annonceListing=["Jobs","Les offres de service","Evènements Religieux","Annonce diverses","Concours","Préfecture","Mairie","Commissariat","Hopitaux","Pharmacie","Ecoles et Institutions","Banques","Bars et Restaurants","Parcs et Jardins","Evènements culturels et Sportifs","Divers"];
   String dropdownValue='Jobs';
   String titre;
   String contenu;
