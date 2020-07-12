@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nymbeul/main.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
+import 'package:nymbeul/model/user.dart';
 
 class ajouterAnnonce extends StatefulWidget{
   @override
@@ -15,7 +16,29 @@ class homeAjouter extends State<ajouterAnnonce>{
   List<String>annonceListing=["Jobs","Les offres de service","Evènements Religieux","Annonce diverses","Concours","Préfecture","Mairie","Commissariat","Hopitaux","Pharmacie","Ecoles et Institutions","Banques","Bars et Restaurants","Parcs et Jardins","Evènements culturels et Sportifs","Divers"];
   String dropdownValue='Jobs';
   String titre;
-  String contenu;
+  String contenu,identifiant,uid;
+  user moi;
+  String valeur="oui";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fireBaseHelper().myId().then((uid)
+    {
+      setState(() {
+        identifiant=uid;
+      });
+      fireBaseHelper().getUser(identifiant).then((user)
+      {
+        setState(() {
+          moi=user;
+        });
+
+      });
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -119,7 +142,13 @@ class homeAjouter extends State<ajouterAnnonce>{
             RaisedButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               onPressed: (){
-                fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue,"oui");
+                if(moi.typeUser!='admin')
+                  {
+                    setState(() {
+                      valeur='non';
+                    });
+                  }
+                fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue,valeur);
                 Navigator.push(context, MaterialPageRoute(
                     builder: (BuildContext context){
                       return MyApp();

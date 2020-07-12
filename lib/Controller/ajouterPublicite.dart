@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:calendar_strip/calendar_strip.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/adminPage.dart';
@@ -21,6 +22,8 @@ class homePublicite extends State<ajouterPublicite>{
   String title;
   File image;
   String urlImage;
+  DateTime dateDebut=DateTime.now();
+  DateTime dateFin = DateTime.now();
   String uid= randomAlphaNumeric(20);
   @override
   Widget build(BuildContext context) {
@@ -32,10 +35,36 @@ class homePublicite extends State<ajouterPublicite>{
 
   Widget bodyPage(){
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Text("Début de la publicité",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+         Padding(padding: EdgeInsets.all(5)),
+         CalendarStrip(
+
+             onDateSelected: (date){
+               setState(() {
+                 dateDebut=date;
+                 dateFin=date;
+               });
+
+             }
+
+         ),
+          Padding(padding: EdgeInsets.all(15)),
+          Text('Fin de la publicité',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+          Padding(padding: EdgeInsets.all(5)),
+          CalendarStrip(
+
+
+
+              onDateSelected: (date){
+                dateFin=date;
+              }
+
+          ),
+          Padding(padding: EdgeInsets.all(15)),
           TextField(
 
             decoration: InputDecoration(
@@ -61,7 +90,7 @@ class homePublicite extends State<ajouterPublicite>{
 
           RaisedButton(
               onPressed: (){
-              fireBaseHelper().ajoutPub(uid, title, urlImage, 'dateDebut', 'datefin');
+              fireBaseHelper().ajoutPub(uid, title, urlImage, dateDebut.millisecondsSinceEpoch.toString(), dateFin.millisecondsSinceEpoch.toString());
               Navigator.push(context, MaterialPageRoute(
                   builder: (BuildContext context)
                       {

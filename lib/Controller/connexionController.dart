@@ -32,7 +32,7 @@ class _connexion extends State<connexionController>
 {
   String _password;
   String _adresseMail;
-  bool connnected =false;
+  bool connnected;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -142,8 +142,10 @@ class _connexion extends State<connexionController>
 
 
     }).catchError((error){
-      alerte(error.toString());
-      connnected=false;
+     setState(() {
+       connnected=false;
+     });
+
     });
     if(connnected==true) {
       Navigator.push(context, new MaterialPageRoute(
@@ -152,7 +154,7 @@ class _connexion extends State<connexionController>
           }
       ));
     }
-    else
+    if(connnected==false)
       {
         alerte("Login ou mot de passe incorrect");
         setState(() {
