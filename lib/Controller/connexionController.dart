@@ -32,6 +32,7 @@ class _connexion extends State<connexionController>
 {
   String _password;
   String _adresseMail;
+  bool connnected =false;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -51,62 +52,62 @@ class _connexion extends State<connexionController>
   Widget body(){
 
     return new SingleChildScrollView(
-      child: new Center(
-          child:new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              (widget.valeur==1)? affichageSnackBar():Container(),
-              new Container(
-                height: MediaQuery.of(context).size.height/2,
-                width: MediaQuery.of(context).size.width/1.2,
-                child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    new TextField(
-                      onChanged: (text){
-                        setState(() {
-                          _adresseMail=text;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'mail',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular((20))
-                          ),
-                          prefixIcon: new Icon(Icons.mail)
+        child: new Center(
+            child:new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                (widget.valeur==1)? affichageSnackBar():Container(),
+                new Container(
+                  height: MediaQuery.of(context).size.height/2,
+                  width: MediaQuery.of(context).size.width/1.2,
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new TextField(
+                        onChanged: (text){
+                          setState(() {
+                            _adresseMail=text;
+                          });
+                        },
+                        decoration: InputDecoration(
+                            labelText: 'mail',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular((20))
+                            ),
+                            prefixIcon: new Icon(Icons.mail)
+                        ),
+                        showCursor: true,
+
                       ),
-                      showCursor: true,
-
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(25.0),
-                    ),
-                    new TextField(
-                      onChanged: (text){
-                        _password=text;
-                      },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          labelText: 'password',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
-                          ),
-                          prefixIcon: new Icon(Icons.lock)
+                      Padding(
+                        padding: EdgeInsets.all(25.0),
                       ),
-                      showCursor: true,
+                      new TextField(
+                        onChanged: (text){
+                          _password=text;
+                        },
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            labelText: 'password',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            prefixIcon: new Icon(Icons.lock)
+                        ),
+                        showCursor: true,
 
-                    ),
+                      ),
 
-                  ],
+                    ],
+                  ),
+
                 ),
+                (Platform.isIOS)?new CupertinoButton(child: new Text('Inscription'), onPressed: versRegister
+                ):new RaisedButton(onPressed:versRegister,child: new Text('Inscription'),),
+                (Platform.isIOS)?new CupertinoButton(child: new Text('Connexion'), onPressed:connexion):new RaisedButton(onPressed:connexion, child: new Text('Connexion'),),
+              ],
 
-              ),
-              (Platform.isIOS)?new CupertinoButton(child: new Text('Inscription'), onPressed: versRegister
-              ):new RaisedButton(onPressed:versRegister,child: new Text('Inscription'),),
-              (Platform.isIOS)?new CupertinoButton(child: new Text('Connexion'), onPressed:connexion):new RaisedButton(onPressed:connexion, child: new Text('Connexion'),),
-            ],
-
-          )
+            )
 
 
 
@@ -115,7 +116,7 @@ class _connexion extends State<connexionController>
 
 
 
-      )
+        )
     );
 
   }
@@ -125,9 +126,9 @@ class _connexion extends State<connexionController>
   {
     Navigator.push(context, new MaterialPageRoute(
         builder: (BuildContext context)
-            {
-              return new registerController();
-            }
+        {
+          return new registerController();
+        }
     ));
   }
 
@@ -135,14 +136,31 @@ class _connexion extends State<connexionController>
   connexion() {
     fireBaseHelper().handleSign(_adresseMail, _password).then((FirebaseUser user){
       print("connexion effectué");
+      setState(() {
+        connnected=true;
+      });
 
+
+    }).catchError((error){
+      alerte(error.toString());
+      connnected=false;
     });
-    Navigator.push(context,new MaterialPageRoute(
-        builder: (BuildContext context)
-        {
-          return adminPage();
-        }
-    ));
+    if(connnected==true) {
+      Navigator.push(context, new MaterialPageRoute(
+          builder: (BuildContext context) {
+            return adminPage();
+          }
+      ));
+    }
+    else
+      {
+        alerte("Login ou mot de passe incorrect");
+        setState(() {
+          _adresseMail="";
+          _password="";
+        });
+
+      }
   }
 
 
@@ -151,11 +169,40 @@ class _connexion extends State<connexionController>
   {
 
     return Container(
-      padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(15),
         child:Text('Pour pouvoir déposer une annonce, merci de vous inscrire ou vous connecter',style: TextStyle(fontSize: 20),)
     );
 
 
+
+  }
+
+
+  Future <void> alerte(String message) async{
+    String titre = "Erreur de connexion";
+    String soustitre= message;
+    return showDialog
+      (
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context)
+        {
+          return (Theme.of(context).platform==TargetPlatform.iOS)
+              ?CupertinoAlertDialog(title: Text(titre),content: Text(message),actions: [
+            FlatButton(
+                onPressed: ()=>Navigator.of(context).pop(),
+                child: Text('OK')
+            )
+          ],)
+              :AlertDialog(title: Text(titre),content: Text(soustitre),actions: [
+            FlatButton(
+                onPressed: ()=>Navigator.of(context).pop(),
+                child: Text('OK')
+            )
+          ],);
+        }
+
+    );
 
   }
 
@@ -174,7 +221,7 @@ class _connexion extends State<connexionController>
                 onPressed: ()
                 {
                   Navigator.pop(context);
-                  },
+                },
                 child: Text("OK"),
               )
             ],

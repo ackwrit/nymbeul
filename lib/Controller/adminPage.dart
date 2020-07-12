@@ -8,6 +8,7 @@ import 'package:nymbeul/Controller/loginControllerOut.dart';
 import 'package:nymbeul/Controller/profilPage.dart';
 import 'package:nymbeul/Controller/validationAnnonce.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
+import 'package:nymbeul/model/user.dart';
 
 class adminPage extends StatefulWidget{
   @override
@@ -21,6 +22,28 @@ class adminPage extends StatefulWidget{
 class homeAdmin extends State<adminPage>{
   PageController pageController=PageController(initialPage: 0);
   int bottomSelectedIndex = 0;
+  String identifiant;
+  user moi;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fireBaseHelper().myId().then((uid)
+    {
+      setState(() {
+        identifiant=uid;
+      });
+      fireBaseHelper().getUser(identifiant).then((user)
+      {
+        setState(() {
+          moi=user;
+        });
+
+      });
+
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -51,7 +74,8 @@ class homeAdmin extends State<adminPage>{
 
 
        ),
-       body: PageView(
+       body: (moi.typeUser=='admin')?
+       PageView(
          controller: pageController,
          onPageChanged: (index)
          {
@@ -64,9 +88,19 @@ class homeAdmin extends State<adminPage>{
            ajouterAnnonce(),
            ajouterPublicite(),
          ],
+       ):
+       PageView(
+         controller: pageController,
+         onPageChanged: (index){
+           pageChanged(index);
+         },
+         children: [
+           profilPage(),
+           ajouterAnnonce()
+         ],
        ),
 
-       bottomNavigationBar: Theme(
+       bottomNavigationBar: (moi.typeUser=='admin')?Theme(
            data: Theme.of(context).copyWith(
                canvasColor: Colors.blue,
                primaryColor: Colors.black,
@@ -88,7 +122,7 @@ class homeAdmin extends State<adminPage>{
            bottomTapped(index);
 
          },
-         items: [
+         items:[
            new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
            new BottomNavigationBarItem(icon: new Icon(Icons.format_list_bulleted),title: new Text('Annonce')),
            new BottomNavigationBarItem(icon: new Icon(Icons.playlist_add_check),title: new Text('Validation')),
@@ -101,7 +135,41 @@ class homeAdmin extends State<adminPage>{
 
 
 
-     )
+     ):
+       Theme(
+         data: Theme.of(context).copyWith(
+             canvasColor: Colors.blue,
+             primaryColor: Colors.black,
+             textTheme: Theme.of(context).textTheme.copyWith(
+                 caption: TextStyle(color: Colors.orange)
+             )
+         ),
+         child: BottomNavigationBar(
+
+
+           currentIndex: bottomSelectedIndex,
+           selectedItemColor: Colors.black,
+
+           backgroundColor: Colors.blue,
+
+
+
+           onTap: (index){
+             bottomTapped(index);
+
+           },
+           items:[
+             new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
+             new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajouter Annonce')),
+
+
+           ],
+
+         ),
+
+
+
+       ) //Version pour les particulliers
      );
 
   }
