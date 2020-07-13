@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "320249740119-3l0q4hua3or4o2ndicl37bg5oledgp2c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lightphoenix.nymbeul",
+            "certificate_hash": "137199bc04c930b2cd4dc7ce7ce195b680438602"
+          }
+        },
+        {
           "client_id": "320249740119-7bl9hugkbmml3mbpdajnemo0fscu598h.apps.googleusercontent.com",
           "client_type": 3
         }
