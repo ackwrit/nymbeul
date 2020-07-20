@@ -39,6 +39,7 @@ class _connexion extends State<connexionController>
     return new Scaffold(
       appBar: AppBar(
         title: Text('Nymbeul'),
+        centerTitle: true,
 
       ),
       body: body(),
@@ -135,7 +136,7 @@ class _connexion extends State<connexionController>
 
   connexion() {
     fireBaseHelper().handleSign(_adresseMail, _password).then((FirebaseUser user){
-      print("connexion effectué");
+      print(user);
       setState(() {
         connnected=true;
       });

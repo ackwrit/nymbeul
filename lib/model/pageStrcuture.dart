@@ -64,16 +64,16 @@ class structureState extends State<pageStructure>{
     annonce(DateTime.now(),'Location Nuit', 'Appart /Nuit / 12 000f', 'Gerant Mame Ran', 'Yoff', '777579585', 'assets/tourisme.png'),
   ];
   List <element>listMinistere=[
-    element("Interieur", "coucou", "assets/interieur.png"),
+    element("Interieur", "coucou", "assets/tourisme.png"),
     element("Tourisme","visiter et voyager dans dakar", "assets/tourisme.png"),
-    element("Justice", "coucou", "assets/justice.png"),
-    element("Défense", "coucou", "assets/armee.png"),
+    element("Justice", "coucou", "assets/tourisme.png"),
+    element("Défense", "coucou", "assets/tourisme.png"),
 
-    element("Santé", "coucou", "assets/sante.png"),
-    element("Affaire étrangère","coucou",'assets/etranger.png'),
-    element("économie","coucou",'assets/economie.png'),
-    element("Culture","coucou",'assets/cuture.png'),
-    element("Agriculture","coucou",'assets/agriculture.png'),
+    element("Santé", "coucou", "assets/tourisme.png"),
+    element("Affaire étrangère","coucou",'assets/tourisme.png'),
+    element("économie","coucou",'assets/tourisme.png'),
+    element("Culture","coucou",'assets/tourisme.png'),
+    element("Agriculture","coucou",'assets/tourisme.png'),
 
   ];
 
@@ -212,6 +212,7 @@ class structureState extends State<pageStructure>{
         appBar: new AppBar(
           title: (widget.titre=='Dakar en transport -DEM DIKK'|| widget.titre=="Dakar en voiture")?Text('${widget.titre}'):Text(widget.titre),
           backgroundColor: Colors.blue,
+          centerTitle: true,
 
         ),
         body:(widget.titre=='Dakar en transport -DEM DIKK' || widget.titre=='Dakar en voiture')?choixBody():body()

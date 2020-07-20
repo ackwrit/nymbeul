@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:320249740119:android:14d4824bc5cfeadea85c12",
+        "mobilesdk_app_id": "1:320249740119:android:bf1d65da3129a8cea85c12",
         "android_client_info": {
           "package_name": "lightphoenix.nymbeul"
         }
       },
       "oauth_client": [
         {
-          "client_id": "320249740119-3l0q4hua3or4o2ndicl37bg5oledgp2c.apps.googleusercontent.com",
+          "client_id": "320249740119-ulmc1n61euc8l47phd9rhl3tb2lemr20.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "lightphoenix.nymbeul",
-            "certificate_hash": "137199bc04c930b2cd4dc7ce7ce195b680438602"
+            "certificate_hash": "9e73bc2a1ceae1f41e69775f633e1d4b7cb14fcf"
           }
         },
         {

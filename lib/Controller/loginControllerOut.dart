@@ -33,7 +33,9 @@ class homeLoginOut extends State<loginControllerOut>{
 
                 ],
 
-                title: Image.asset('assets/nymbeul_logo.png',height: 200,width: 600,),
+                //title: Image.asset('assets/NYMBEUL.png',height: 100,),
+                centerTitle: true,
+                flexibleSpace: Image.asset('assets/NYMBEUL.png',scale: 3,),
 
                 backgroundColor: Colors.blue,
 
