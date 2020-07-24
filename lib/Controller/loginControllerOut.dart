@@ -35,7 +35,7 @@ class homeLoginOut extends State<loginControllerOut>{
 
                 //title: Image.asset('assets/NYMBEUL.png',height: 100,),
                 centerTitle: true,
-                flexibleSpace: Image.asset('assets/NYMBEUL.png',scale: 3,),
+                flexibleSpace: Image.asset('assets/logo gris.png',scale: 2,),
 
                 backgroundColor: Colors.blue,
 

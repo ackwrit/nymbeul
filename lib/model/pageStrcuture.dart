@@ -397,21 +397,33 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  child:Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+
+                  },
                 ),
+
                 Divider(thickness: 3,color: Colors.orange,)
 
               ],
@@ -435,21 +447,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(thickness: 3,color: Colors.orange,)
 
               ],
@@ -475,21 +498,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child:Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(thickness: 3,color: Colors.orange,)
 
               ],
@@ -514,21 +548,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(thickness: 3,color: Colors.orange,)
 
 
@@ -553,21 +598,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(thickness: 3,color: Colors.orange,)
 
               ],
@@ -591,21 +647,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(thickness: 3,color: Colors.orange,)
               ],
 
@@ -628,21 +695,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child:Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(
                   thickness: 3,
                   color: Colors.orange,
@@ -669,21 +747,27 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(
                   thickness: 3,
                   color: Colors.orange,
@@ -709,21 +793,28 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child:  Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+
+                      }
+                      ),
                     ),
                   ),
+
                 ),
+
                 Divider(
                   thickness: 3,
                   color: Colors.orange,
@@ -752,21 +843,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(
                   thickness: 3,
                   color: Colors.orange,
@@ -794,21 +896,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(
                   thickness: 3,
                   color: Colors.orange,
@@ -838,25 +951,36 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
+
+
+
+
                   ),
-
-
-
-
                 ),
+
                 Divider(
                   color: Colors.orange,
                   thickness: 3,
@@ -886,21 +1010,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(
                   color: Colors.orange,
                   thickness: 3,
@@ -929,21 +1064,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(
                   color: Colors.orange,
                   thickness: 3,
@@ -970,21 +1116,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
                 children:[
-                  Card(
-                    child: ListTile(
-                      title: Text(mess.titre),
-                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                      {
-                        Navigator.push(context, MaterialPageRoute(
-                            builder: (BuildContext context)
-                            {
-                              return detailAnnonceController(mess: mess,);
-                            }
-                        ));
-                      }
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context)
+                          {
+                            return detailAnnonceController(mess: mess,);
+                          }
+                      ));
+                    },
+                    child: Card(
+                      child: ListTile(
+                        title: Text(mess.titre),
+                        trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                        {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (BuildContext context)
+                              {
+                                return detailAnnonceController(mess: mess,);
+                              }
+                          ));
+                        }
+                        ),
                       ),
                     ),
                   ),
+
                   Divider(
                     thickness: 3,
                     color: Colors.orange,
@@ -1014,21 +1171,32 @@ class structureState extends State<pageStructure>{
           if(mess.typeAnnonce==widget.titre && mess.validate!='non'){
             return Column(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Text(mess.titre),
-                    trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context)
-                          {
-                            return detailAnnonceController(mess: mess,);
-                          }
-                      ));
-                    }
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context)
+                        {
+                          return detailAnnonceController(mess: mess,);
+                        }
+                    ));
+                  },
+                  child: Card(
+                    child: ListTile(
+                      title: Text(mess.titre),
+                      trailing: IconButton(icon: Icon(Icons.info), onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context)
+                            {
+                              return detailAnnonceController(mess: mess,);
+                            }
+                        ));
+                      }
+                      ),
                     ),
                   ),
                 ),
+
                 Divider(
                   thickness: 3,
                   color: Colors.orange,
