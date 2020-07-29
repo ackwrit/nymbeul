@@ -1,7 +1,11 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/main.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
 import 'package:nymbeul/model/user.dart';
+import 'package:random_string/random_string.dart';
 
 class ajouterAnnonce extends StatefulWidget{
   @override
@@ -19,6 +23,13 @@ class homeAjouter extends State<ajouterAnnonce>{
   String contenu,identifiant,uid;
   user moi;
   String valeur="oui";
+  List <File> image;
+  String urlImage0,urlImage1,urlImage2;
+  String alpha=randomAlphaNumeric(56);
+  String beta=randomAlphaNumeric(56);
+  String gama=randomAlphaNumeric(56);
+  String idVariable=randomAlphaNumeric(13);
+
 
   @override
   void initState() {
@@ -139,6 +150,16 @@ class homeAjouter extends State<ajouterAnnonce>{
 
 
             ),
+            (dropdownValue=='Bars et Restaurants' || dropdownValue=="Annonce diverses")
+
+                ?RaisedButton(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  onPressed: imagePicker,
+                  child: Text('Importer image'),
+                ):
+                Container(),
+              
+
             RaisedButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               onPressed: (){
@@ -148,7 +169,7 @@ class homeAjouter extends State<ajouterAnnonce>{
                       valeur='non';
                     });
                   }
-                fireBaseHelper().sendMessage(titre, contenu, "biMb8CGSbhT7vE4Tbkgbgfkby52ATPenevg1", dropdownValue,valeur);
+                fireBaseHelper().sendMessage(titre, contenu, idVariable, dropdownValue,valeur,urlImage0,urlImage1,urlImage2);
                 Navigator.push(context, MaterialPageRoute(
                     builder: (BuildContext context){
                       return MyApp();
@@ -163,6 +184,41 @@ class homeAjouter extends State<ajouterAnnonce>{
 
         )
     );
+  }
+
+
+  imagePicker() async {
+    int i=0;
+
+    image = await FilePicker.getMultiFile(
+      type: FileType.image,
+
+    );
+
+
+
+      urlImage0 = await fireBaseHelper().savePicture(image[0], fireBaseHelper().storage_annonce.child(alpha));
+      urlImage1 = await fireBaseHelper().savePicture(image[1], fireBaseHelper().storage_annonce.child(beta));
+      urlImage2 = await fireBaseHelper().savePicture(image[2], fireBaseHelper().storage_annonce.child(gama));
+
+
+
+
+    //Map map=moi.toMap();
+    //map['image1']=urlImage0;
+    //map['image2']=urlImage1;
+    //map['image3']=urlImage2;
+    fireBaseHelper().sendMessage(titre,contenu,idVariable,dropdownValue,valeur,urlImage0,urlImage1,urlImage2);
+
+
+
+
+
+
+
+
+
+
   }
 
 }

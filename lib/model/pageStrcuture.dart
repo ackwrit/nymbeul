@@ -784,6 +784,7 @@ class structureState extends State<pageStructure>{
       );
     }
     if(widget.titre == 'Bars et Restaurants')
+    //Afficher des images
     {
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,
@@ -1162,6 +1163,7 @@ class structureState extends State<pageStructure>{
     }
     if(widget.titre =='Annonces diverses')
     {
+      //Afficher des images
 
       return FirebaseAnimatedList(
         query: fireBaseHelper().base_message,

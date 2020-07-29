@@ -9,6 +9,9 @@ class message{
   String idUser;
   String uid;
   String validate;
+  String image1;
+  String image2;
+  String image3;
 
   message(DataSnapshot snapshot)
   {
@@ -20,6 +23,9 @@ class message{
    typeAnnonce=map["typeAnnonce"];
     idUser=map["idUser"];
     validate =map['validation'];
+    image1 =map['image1'];
+    image2 =map['image2'];
+    image3 =map['image3'];
 
 
   }
@@ -32,7 +38,10 @@ class message{
     //"Date":temps,
     "typeAnnonce":typeAnnonce,
     "uid":uid,
-    "validation":validate
+    "validation":validate,
+    "image1":image1,
+    "image2":image2,
+    "image3":image3,
 
   };
 }

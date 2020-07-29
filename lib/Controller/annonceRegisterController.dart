@@ -145,7 +145,7 @@ class homeAnnonce extends State<annonceRegisterController>{
                             builder: (BuildContext context,snapshot)
                                 {
                                   if(snapshot.hasData){
-                                    fireBaseHelper().sendMessage(titre, contenu, identifiant, dropdownValue,"non");
+                                    fireBaseHelper().sendMessage(titre, contenu, identifiant, dropdownValue,"non","","","");
                                     return MyApp();
 
                                   }

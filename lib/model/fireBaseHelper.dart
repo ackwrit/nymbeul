@@ -77,9 +77,9 @@ class fireBaseHelper {
     base_message.child(uid).remove();
   }
 
-  sendMessage(String titre, String contenu, String monId,String typeAnnonce,String validate)
+  sendMessage(String titre, String contenu, String monId,String typeAnnonce,String validate,String image1,String image2,String image3)
   {
-    String uid = monId+DateTime.now().millisecondsSinceEpoch.toString();
+    String uid = monId;
     String date = DateTime.now().millisecondsSinceEpoch.toString();
     Map map ={
       "idUser":monId,
@@ -88,7 +88,10 @@ class fireBaseHelper {
       "typeAnnonce":typeAnnonce,
       "date":date,
       "uid":uid,
-      "validation":validate
+      "validation":validate,
+      "image1":image1,
+      "image2":image2,
+      "image3":image3
 
     };
     base_message.child(uid).set(map);
@@ -126,6 +129,7 @@ class fireBaseHelper {
   //storage
   static final base_storage = FirebaseStorage.instance.ref();
   final StorageReference storage_publicite = base_storage.child("publicite");
+  final StorageReference storage_annonce = base_storage.child("annonce");
 
   Future <String> savePicture(File file,StorageReference storageReference) async{
     StorageUploadTask storageUploadTask = storageReference.putFile(file);
