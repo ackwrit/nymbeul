@@ -51,11 +51,32 @@ class homeDetailAnn extends State<detailAnnonceController>{
                    return Container(
                      height: MediaQuery.of(context).size.height/4,
                      width: MediaQuery.of(context).size.width-50,
-                     child: Card(
+                     child: (e!=null)?Card(
                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                       child: Image.network(e,fit: BoxFit.fill,),
+                       child:
+                       InkWell(
+                         onTap: (){
+                           Navigator.push(context, MaterialPageRoute(
+                               builder: (BuildContext context){
+                                 return Scaffold(
+                                   appBar: AppBar(),
+                                   body: Container(
+                                     child :Hero(
+                                       tag: 'dash',
+                                       child:Image.network(e,fit: BoxFit.fill,height: MediaQuery.of(context).size.height,)
+                                     ),
+                                   ),
 
-                     ),
+                                 );
+                               }
+                           ));
+
+                         },
+                         child: Image.network(e,fit: BoxFit.fill,),
+                       ),
+
+
+                     ):Container(),
                    );
 
 
