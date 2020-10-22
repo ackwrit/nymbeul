@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nymbeul/Controller/ajouterAnnonce.dart';
@@ -5,6 +6,7 @@ import 'package:nymbeul/Controller/ajouterPublicite.dart';
 import 'package:nymbeul/Controller/connexionController.dart';
 import 'package:nymbeul/Controller/listeAnnonce.dart';
 import 'package:nymbeul/Controller/loginControllerOut.dart';
+import 'package:nymbeul/Controller/parametreProfil.dart';
 import 'package:nymbeul/Controller/profilPage.dart';
 import 'package:nymbeul/Controller/validationAnnonce.dart';
 import 'package:nymbeul/model/fireBaseHelper.dart';
@@ -83,10 +85,12 @@ class homeAdmin extends State<adminPage>{
          },
          children: [
            profilPage(),
+           parametreProfil(),
            listeAnnonce(),
            validationAnnonce(),
            ajouterAnnonce(),
            ajouterPublicite(),
+
          ],
        ):
        PageView(
@@ -124,6 +128,7 @@ class homeAdmin extends State<adminPage>{
          },
          items:[
            new BottomNavigationBarItem(icon: new Icon(Icons.account_circle),title: new Text("Profil")),
+           new BottomNavigationBarItem(icon: new Icon(Icons.settings),title: new Text("Paramètre")),
            new BottomNavigationBarItem(icon: new Icon(Icons.format_list_bulleted),title: new Text('Annonce')),
            new BottomNavigationBarItem(icon: new Icon(Icons.playlist_add_check),title: new Text('Validation')),
            new BottomNavigationBarItem(icon: new Icon(Icons.add_circle),title: new Text('Ajouter Annonce')),

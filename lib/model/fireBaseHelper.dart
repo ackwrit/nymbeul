@@ -52,6 +52,12 @@ class fireBaseHelper {
   }
 
 
+  Future <FirebaseUser> changePassword(FirebaseUser user,String password) async{
+    user.updatePassword(password);
+    return user;
+  }
+
+  
 
 
 

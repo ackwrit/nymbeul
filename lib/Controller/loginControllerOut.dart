@@ -94,8 +94,8 @@ class homeLoginOut extends State<loginControllerOut>{
 
 
 
-            ))
-            ;
+            )
+            );
 
 
   }

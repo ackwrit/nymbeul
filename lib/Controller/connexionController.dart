@@ -31,8 +31,10 @@ class connexionController extends StatefulWidget{
 class _connexion extends State<connexionController>
 {
   String _password;
+  String _newPassword;
   String _adresseMail;
   bool connnected;
+  bool update=false;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -98,6 +100,55 @@ class _connexion extends State<connexionController>
                         showCursor: true,
 
                       ),
+                      Padding(
+                        padding: EdgeInsets.all(15.0),
+                      ),
+                      RaisedButton(
+                        child: Text('Nouveau mot de passe'),
+                        onPressed: (){
+                          setState(() {
+                            update=!update;
+                          });
+                        },
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                        color: Colors.blue,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(25.0),
+                      ),
+                      (update)?new TextField(
+                        onChanged: (text){
+                          _newPassword=text;
+                        },
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            labelText: 'Nouveau Password',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            prefixIcon: new Icon(Icons.lock)
+                        ),
+                        showCursor: true,
+
+                      ):Container(),
+                      (update)?RaisedButton(
+                        child: Text('Enregistrement'),
+                        onPressed: (){
+                          fireBaseHelper().handleSign(_adresseMail, _password).then((FirebaseUser user){
+                            fireBaseHelper().changePassword(user, _newPassword);
+                            alerte("Enregistrement effectué");
+
+                          });
+
+                        },
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                        color: Colors.blue,
+                      ):Container(),
+
+
+
+
+
 
                     ],
                   ),
@@ -182,7 +233,7 @@ class _connexion extends State<connexionController>
 
 
   Future <void> alerte(String message) async{
-    String titre = "Erreur de connexion";
+    String titre = "Information";
     String soustitre= message;
     return showDialog
       (
